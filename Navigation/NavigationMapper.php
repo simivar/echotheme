@@ -19,10 +19,7 @@ class NavigationMapper
 
         $existingMenuLocations = get_nav_menu_locations();
         if (!array_key_exists($menuName, $existingMenuLocations)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Menu location does not exist [%s]',
-                $menuName,
-            ));
+            return [];
         }
 
         $menuItems = wp_get_nav_menu_items($existingMenuLocations[$menuName]);

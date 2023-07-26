@@ -21,63 +21,23 @@
         </div>
         <div class="row pt-5">
             <div class="col">
+                <?php
+                $headerNavigation = NavigationMapper::getMappedMenuItems(NavigationMapper::FOOTER_MENU);
+                ?>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/austriacka-bundesliga/">Austriacka Bundesliga</a>
+                    <?php foreach($headerNavigation as $item): ?>
+                    <li class="nav-item px-2">
+                        <a class="nav-link btn-link text-white <?php echo $item->isActive() ? 'active' : ''; ?>" href="<?php echo $item->getUrl(); ?>">
+                            <?php echo $item->getTitle(); ?>
+                        </a>
                     </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/bundesliga/">Bundesliga</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/czeska-liga/">Czeska liga</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/e-sport/">E-sport</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/ekstraklasa/">Ekstraklasa</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/felietony/">Felietony</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/igrzyska-europejskie/">Igrzyska Europejskie</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/la-liga/">La Liga</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/liga-europy/">Liga Europy</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/liga-holenderska/">Liga Holenderska</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/liga-izraelska/">Liga Izraelska</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/liga-konferencji/">Liga Konferencji</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/liga-mistrzow/">Liga Mistrzów</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/liga-narodow/">Liga Narodów</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/ligue-1/">Ligue 1</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/mundial-katar-2022/">Mundial Katar 2022</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/nizsze-ligi/">Niższe ligi</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/pilka-nozna-mlodziezowa/">Piłka Nożna Młodzieżowa</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/premier-league/">Premier League</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/puchar-polski/">Puchar Polski</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/reprezentacja-polski/">Reprezentacja Polski</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/serie-a/">Serie A</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/tenis/">Tenis</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/trzesienie-ziemi/">Trzęsienie ziemi</a>
-                    </li>
-                    <li class="nav-item px-2"><a class="nav-link btn-link text-white" href="https://echotrybun.pl/category/wojna-w-ukrainie/">Wojna w Ukrainie</a>
-                    </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>
         <div class="row pt-5">
             <div class="col">
-                Echo Trybun © 2023. Wszystkie prawa zastrzeżone
+                Echo Trybun © <?php echo date('Y'); ?>. Wszystkie prawa zastrzeżone
             </div>
             <div class="col">
                 Echo Trybun – newsy, ciekawostki, reportaże, rozmowy i najciekawsze informacje ze świata sportu. Piłka nożna i wiele więcej…
