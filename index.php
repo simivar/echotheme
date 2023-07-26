@@ -20,3 +20,5 @@ FeaturedPostsTemplate::render($featuredPosts);
 
 $featuredPosts = array_slice($posts, 6);
 NewestPostsWithSidebarTemplate::render($featuredPosts);
+
+get_footer();
