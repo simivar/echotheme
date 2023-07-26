@@ -6,7 +6,7 @@ class NoEnoughPostsTemplate
     {
         $error = 'No posts found';
         if ($requiredPosts > 0) {
-            $error = "No posts found. At least {$requiredPosts} posts are required to display featured posts.";
+            $error = "No posts found. At least {$requiredPosts} post(s) are required to display featured posts.";
         }
 
         echo <<<HTML

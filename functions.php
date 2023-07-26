@@ -3,6 +3,7 @@
 require_once get_template_directory() . '/Navigation/NavigationMapper.php';
 require_once get_template_directory() . '/FrontPage/NoEnoughPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/FeaturedPostsTemplate.php';
+require_once get_template_directory() . '/FrontPage/NewestPostsWithSidebarTemplate.php';
 require_once get_template_directory() . '/Utils/ArbitraryStringToHexColor.php';
 
 function register_echotheme_menus() {

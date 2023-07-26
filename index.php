@@ -15,4 +15,8 @@ if (count($posts) === 0) {
     return;
 }
 
-FeaturedPostsTemplate::render($posts);
+$featuredPosts = array_slice($posts, 0, 6);
+FeaturedPostsTemplate::render($featuredPosts);
+
+$featuredPosts = array_slice($posts, 6);
+NewestPostsWithSidebarTemplate::render($featuredPosts);
