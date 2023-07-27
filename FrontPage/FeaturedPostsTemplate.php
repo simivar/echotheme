@@ -59,7 +59,6 @@ HTML;
     private static function renderSinglePost(WP_Post $post, bool $isSmaller = true): string
     {
         $link = esc_url(get_permalink($post));
-        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured');
 
         /** @var WP_Term[] $category */
         $category = get_the_category($post);
@@ -75,6 +74,9 @@ HTML;
         $smallTitleClass = '';
         if ($isSmaller) {
             $smallTitleClass = 'fs-4';
+            $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-small');
+        } else {
+            $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured');
         }
 
         return <<<HTML

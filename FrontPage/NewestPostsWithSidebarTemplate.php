@@ -118,7 +118,7 @@ HTML;
     private static function renderSinglePost(WP_Post $post): string
     {
         $link = esc_url(get_permalink($post));
-        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured');
+        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
 
         /** @var WP_Term[] $category */
         $category = get_the_category($post);

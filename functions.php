@@ -18,7 +18,9 @@ function register_echotheme_menus() {
 add_action( 'init', 'register_echotheme_menus' );
 
 add_theme_support('post-thumbnails');
-add_image_size( 'echotheme-featured', 850, 540 );
+add_image_size('echotheme-featured', 99999, 479);
+add_image_size('echotheme-featured-small', 99999, 254);
+add_image_size('echotheme-featured-wide', 99999, 179);
 
 function echotheme_customize_socials(WP_Customize_Manager $wp_customize)
 {
