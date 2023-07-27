@@ -13,6 +13,11 @@ class NewestPostsWithSidebarTemplate
             return;
         }
 
+        $carousel = '';
+        if (count($posts) > 10) {
+            $carousel = self::renderCarousel($posts);
+        }
+
         $postsHtml = '';
         foreach ($posts as $post) {
             $postsHtml .= self::renderSinglePost($post);
@@ -112,6 +117,14 @@ class NewestPostsWithSidebarTemplate
     </div>
 </section>
 HTML;
+
+    }
+
+    /**
+     * @param WP_Post[] $posts
+     */
+    private static function renderCarousel(array $posts): string
+    {
 
     }
 

@@ -5,6 +5,7 @@ require_once get_template_directory() . '/FrontPage/NoEnoughPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/FeaturedPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/NewestPostsWithSidebarTemplate.php';
 require_once get_template_directory() . '/Utils/ArbitraryStringToHexColor.php';
+require_once get_template_directory() . '/Posts/CountPostViews.php';
 
 function register_echotheme_menus() {
     register_nav_menus(
@@ -58,7 +59,6 @@ function echotheme_customize_socials(WP_Customize_Manager $wp_customize)
     ]);
 }
 add_action('customize_register','echotheme_customize_socials');
-
 
 /*
  * Add support for core custom logo.

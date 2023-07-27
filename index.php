@@ -4,7 +4,7 @@ get_header();
 
 $posts = get_posts(
     array(
-        'numberposts' => 17,
+        'numberposts' => 20,
         'post_status' => 'publish',
     )
 );
