@@ -55,3 +55,23 @@ function echotheme_customize_socials(WP_Customize_Manager $wp_customize)
     ]);
 }
 add_action('customize_register','echotheme_customize_socials');
+
+
+/*
+ * Add support for core custom logo.
+ *
+ * @link https://codex.wordpress.org/Theme_Logo
+ */
+$logo_width  = 415;
+$logo_height = 45;
+
+add_theme_support(
+    'custom-logo',
+    array(
+        'height'               => $logo_height,
+        'width'                => $logo_width,
+        'flex-width'           => true,
+        'flex-height'          => true,
+        'unlink-homepage-logo' => true,
+    )
+);

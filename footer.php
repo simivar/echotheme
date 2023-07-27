@@ -7,7 +7,11 @@
             </div>
             <div class="col-4">
                 <a href="<?php echo esc_url(home_url( '/' )); ?>">
-                    <img src="https://echotrybun.pl/wp-content/uploads/2022/11/echo_trybun_cut.png" class="img-fluid"/>
+                    <?php
+                    $custom_logo_id = get_theme_mod('custom_logo');
+                    $image = wp_get_attachment_image_src($custom_logo_id , [415, 45])[0];
+                    ?>
+                    <img src="<?php echo $image; ?>" class="img-fluid"/>
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-end">
