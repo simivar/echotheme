@@ -13,15 +13,12 @@ class NewestPostsWithSidebarTemplate
             return;
         }
 
-        $carousel = '';
-        if (count($posts) > 10) {
-            $carousel = self::renderCarousel($posts);
-        }
-
         $postsHtml = '';
         foreach ($posts as $post) {
             $postsHtml .= self::renderSinglePost($post);
         }
+
+        $carousel = self::renderCarousel();
 
         echo <<<HTML
 <section class="pt-4 pb-0">
@@ -47,69 +44,7 @@ class NewestPostsWithSidebarTemplate
                         <h2 class="m-0 col">Warto przeczytać</h2>
                     </div>
                     <div class="row">
-                        <div id="carouselExampleCaptions" class="carousel slide col" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="card text-light card-img-scale w-100 overflow-hidden">
-                                        <img src="https://echotrybun.pl/wp-content/uploads/2023/07/Zrzut-ekranu-2023-07-20-101716-850x541.png" class="d-block card-img h-100" alt="...">
-                                        <div class="card-img-overlay d-flex">
-                                            <div class="w-100 mt-auto">
-                                                <a href="#" class="badge text-bg-danger mb-2">
-                                                    Lifestyle
-                                                </a>
-
-                                                <h1 class="card-title">
-                                                    <a href="http://google.com" class="btn-link stretched-link text-reset">
-                                                        To koniec! Viaplay wynosi się z Polski
-                                                    </a>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-light card-img-scale w-100 overflow-hidden">
-                                        <img src="https://echotrybun.pl/wp-content/uploads/2023/07/Zrzut-ekranu-2023-07-19-213707-642x491.png" class="d-block card-img h-100" alt="...">
-                                        <div class="card-img-overlay d-flex">
-                                            <div class="w-100 mt-auto">
-                                                <a href="#" class="badge text-bg-danger mb-2">
-                                                    Lifestyle
-                                                </a>
-
-                                                <h2 class="card-title fs-4">
-                                                    <a href="http://google.com" class="btn-link stretched-link text-reset">
-                                                        Lechia zaoferowała bajeczne zarobki Fernandezowi. “Miał też oferty z Ekstraklasy, ale nie tak atrakcyjne”
-                                                    </a>
-                                                </h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-light card-img-scale w-100 overflow-hidden">
-                                        <img src="https://echotrybun.pl/wp-content/uploads/2023/07/Zrzut-ekranu-2023-07-20-101716-850x541.png" class="d-block card-img h-100" alt="...">
-                                        <div class="card-img-overlay d-flex">
-                                            <div class="w-100 mt-auto">
-                                                <a href="#" class="badge text-bg-danger mb-2">
-                                                    Lifestyle
-                                                </a>
-
-                                                <h1 class="card-title">
-                                                    <a href="http://google.com" class="btn-link stretched-link text-reset">
-                                                        To koniec! Viaplay wynosi się z Polski
-                                                    </a>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {$carousel}
                     </div>
                 </div>
             </div>
@@ -117,14 +52,6 @@ class NewestPostsWithSidebarTemplate
     </div>
 </section>
 HTML;
-
-    }
-
-    /**
-     * @param WP_Post[] $posts
-     */
-    private static function renderCarousel(array $posts): string
-    {
 
     }
 
@@ -166,5 +93,104 @@ HTML;
     </div>
 </div>
 HTML;
+    }
+
+    /**
+     * @return WP_Post[]
+     */
+    private static function getPopularPostsByViews(): array
+    {
+        return get_posts([
+            'numberposts' => 4,
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'meta_key' => 'wpb_post_views_count',
+            'orderby' => 'wpb_post_views_count meta_value_num',
+            'order' => 'DESC',
+        ]);
+    }
+
+    private static function renderCarousel(): string
+    {
+        $posts = self::getPopularPostsByViews();
+        $postCount = count($posts);
+        if ($postCount < 1) {
+            return '';
+        }
+
+        $carouselPagination = self::renderCarouselPagination($postCount);
+
+        $carouselItems = '';
+        foreach ($posts as $post) {
+            if ($carouselItems === '') {
+                $carouselItems .= self::renderSingleCarouselItem($post, 'active');
+                continue;
+            }
+
+            $carouselItems .= self::renderSingleCarouselItem($post);
+        }
+
+        return <<<HTML
+<div id="carouselExampleCaptions" class="carousel slide col" data-bs-ride="carousel">
+<div class="carousel-indicators">
+    {$carouselPagination}
+</div>
+<div class="carousel-inner">
+    {$carouselItems}
+</div>
+</div>
+HTML;
+    }
+
+    private static function renderSingleCarouselItem(WP_Post $post, string $class = ''): string
+    {
+        $link = esc_url(get_permalink($post));
+        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
+
+        /** @var WP_Term[] $category */
+        $category = get_the_category($post);
+        if (empty($category)) {
+            $categoryUrl = '';
+            $category = '';
+        } else {
+            $categoryUrl = esc_url(get_category_link($category[0]));
+            $category = $category[0]->name;
+        }
+        $categoryColor = ArbitraryStringToHexColor::generate($category);
+
+        return <<<HTML
+<div class="carousel-item $class">
+    <div class="card text-light card-img-scale w-100 overflow-hidden">
+        <img src="{$thumbnail}" class="d-block card-img h-100" alt="...">
+        <div class="card-img-overlay d-flex">
+            <div class="w-100 mt-auto">
+                <a href="{$categoryUrl}" class="badge mb-2" style="background-color: #{$categoryColor} !important;">
+                    {$category}
+                </a>
+
+                <h2 class="card-title fs-4">
+                    <a href="{$link}" class="btn-link stretched-link text-reset">
+                        {$post->post_title}
+                    </a>
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+HTML;
+
+    }
+
+    private static function renderCarouselPagination(int $postCount): string
+    {
+        $return = '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+        for($i = 1; $i < $postCount; $i++) {
+            $num = $i + 1;
+            $return .= <<<HTML
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide {$num}"></button>
+HTML;
+        }
+
+        return $return;
     }
 }
