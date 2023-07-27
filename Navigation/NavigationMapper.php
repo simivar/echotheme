@@ -8,6 +8,7 @@ class NavigationMapper
 {
     public const HEADER_MENU = 'header-menu';
     public const FOOTER_MENU = 'footer-menu';
+    public const FOOTER_TOP_MENU = 'footer-top-menu';
 
     private static int $currentCategoryId = 0;
 

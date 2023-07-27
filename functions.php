@@ -10,7 +10,8 @@ function register_echotheme_menus() {
     register_nav_menus(
         array(
             NavigationMapper::HEADER_MENU => __( 'Header Menu' ),
-            NavigationMapper::FOOTER_MENU => __( 'Footer Menu' )
+            NavigationMapper::FOOTER_MENU => __( 'Footer Menu' ),
+            NavigationMapper::FOOTER_TOP_MENU => __( 'Footer Small Top Menu' ),
         )
     );
 }

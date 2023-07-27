@@ -2,8 +2,17 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-4">
-                <a href="https://echotrybun.pl/o-mnie/" class="text-rest text-white btn-link fw-bold">O nas</a>
-                <a href="https://echotrybun.pl/cookie-policy/" class="text-rest text-white btn-link ms-4 fw-bold">Polityka prywatności</a>
+                <?php
+                $footerTopMenu = NavigationMapper::getMappedMenuItems(NavigationMapper::FOOTER_TOP_MENU);
+                $footerTopMenuCount = count($footerTopMenu);
+                $i = 0;
+                ?>
+                <?php foreach($footerTopMenu as $item): ?>
+                    <a href="<?php echo $item->getUrl(); ?>" class="text-rest text-white btn-link fw-bold <?php echo $i !== 0 ? 'ms-4' : ''; ?>">
+                        <?php echo $item->getTitle(); ?>
+                    </a>
+                    <?php $i = 1; ?>
+                <?php endforeach; ?>
             </div>
             <div class="col-4">
                 <a href="<?php echo esc_url(home_url( '/' )); ?>">
