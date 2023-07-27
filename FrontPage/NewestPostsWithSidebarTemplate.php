@@ -107,6 +107,10 @@ HTML;
             'meta_key' => 'wpb_post_views_count',
             'orderby' => 'wpb_post_views_count meta_value_num',
             'order' => 'DESC',
+            'date_query' => [
+                'after' => '1 week ago',
+                'inclusive' => true,
+            ],
         ]);
     }
 
