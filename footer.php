@@ -1,4 +1,4 @@
-<footer class="bottom-0 bg-black text-white mt-5">
+<footer class="bottom-0 bg-black text-white mt-5 mt-auto">
     <div class="container py-5">
         <div class="row">
             <div class="col-4">

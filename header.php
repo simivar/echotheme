@@ -16,7 +16,7 @@
     <?php _wp_render_title_tag(); ?>
     <?php track_post_views(); ?>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <nav class="navbar navbar-expand-lg bg-black sticky-top" data-bs-theme="dark">
     <div class="container">
