@@ -4,6 +4,7 @@ require_once get_template_directory() . '/Navigation/NavigationMapper.php';
 require_once get_template_directory() . '/FrontPage/NoEnoughPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/FeaturedPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/NewestPostsWithSidebarTemplate.php';
+require_once get_template_directory() . '/FrontPage/CategoryPostsSection.php';
 require_once get_template_directory() . '/Utils/ArbitraryStringToHexColor.php';
 require_once get_template_directory() . '/Utils/CategoriesMapper.php';
 require_once get_template_directory() . '/Posts/CountPostViews.php';
@@ -73,7 +74,8 @@ function echotheme_customize_socials(WP_Customize_Manager $wp_customize)
     $wp_customize->add_control(
         new MultiselectCustomControl(
             $wp_customize, 'frontpage_categories', array(
-                'label' => 'Categories sections',
+                'label' => 'Category posts sections',
+                'description' => 'If you want to select multiple categories, hold CTRL and click on them.',
                 'section' => 'front_page',
                 'settings' => 'frontpage_categories',
                 'type'     => 'multiple-select',

@@ -20,6 +20,9 @@ if (class_exists('WP_Customize_Control')) {
             ?>
             <label>
                 <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                <span class="description customize-control-description">
+                    <?php echo $this->description; ?>
+                </span>
                 <select <?php $this->link(); ?> multiple="multiple" size="25">
                     <?php
                     foreach ( $this->choices as $value => $label ) {
