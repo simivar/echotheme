@@ -53,7 +53,7 @@ HTML;
 
         return <<<HTML
 
-<div class="col-3">
+<div class="col-xl-3 col-md-6 col-12">
     <div class="row">
         <div class="col">
             <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3">
@@ -68,7 +68,7 @@ HTML;
                     {$category}
                 </a>
     
-                <h4 class="fs-">
+                <h4>
                     <a href="{$link}" class="btn-link stretched-link text-reset fw-bold">
                         {$post->post_title}
                     </a>
