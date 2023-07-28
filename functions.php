@@ -5,7 +5,9 @@ require_once get_template_directory() . '/FrontPage/NoEnoughPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/FeaturedPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/NewestPostsWithSidebarTemplate.php';
 require_once get_template_directory() . '/Utils/ArbitraryStringToHexColor.php';
+require_once get_template_directory() . '/Utils/CategoriesMapper.php';
 require_once get_template_directory() . '/Posts/CountPostViews.php';
+require_once get_template_directory() . '/Customization/MultiselectCustomControl.php';
 
 function register_echotheme_menus() {
     register_nav_menus(
@@ -57,6 +59,28 @@ function echotheme_customize_socials(WP_Customize_Manager $wp_customize)
             'placeholder' => 'https://facebook.com/krystian.marcisz/',
         ],
     ]);
+
+    $wp_customize->add_section('front_page', [
+        'title' => 'Front page',
+        'description' => 'Here you can change settings of front page',
+    ]);
+
+    $wp_customize->add_setting('frontpage_categories', [
+        'default' => '',
+        'transport' => 'refresh',
+    ]);
+
+    $wp_customize->add_control(
+        new MultiselectCustomControl(
+            $wp_customize, 'frontpage_categories', array(
+                'label' => 'Categories sections',
+                'section' => 'front_page',
+                'settings' => 'frontpage_categories',
+                'type'     => 'multiple-select',
+                'choices'	=> CategoriesMapper::mapAsIdToNameArray(),
+            )
+        )
+    );
 }
 add_action('customize_register','echotheme_customize_socials');
 

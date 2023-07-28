@@ -10,7 +10,6 @@
     <?php wp_site_icon(); ?>
     <?php wp_shortlink_wp_head(); ?>
     <?php rel_canonical(); ?>
-    <?php noindex(); ?>
     <?php adjacent_posts_rel_link_wp_head(); ?>
     <?php wp_resource_hints(); ?>
     <?php wp_enqueue_scripts(); ?>
