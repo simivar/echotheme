@@ -84,7 +84,7 @@ HTML;
                 {$category}
             </a>
 
-            <h4 class="fs-">
+            <h4>
                 <a href="{$link}" class="btn-link stretched-link text-reset fw-bold">
                     {$post->post_title}
                 </a>
@@ -172,11 +172,11 @@ HTML;
                     {$category}
                 </a>
 
-                <h2 class="card-title fs-4">
+                <h6 class="card-title">
                     <a href="{$link}" class="btn-link stretched-link text-reset">
                         {$post->post_title}
                     </a>
-                </h2>
+                </h6>
             </div>
         </div>
     </div>
@@ -191,7 +191,7 @@ HTML;
         for($i = 1; $i < $postCount; $i++) {
             $num = $i + 1;
             $return .= <<<HTML
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide {$num}"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{$i}" aria-label="Slide {$num}"></button>
 HTML;
         }
 

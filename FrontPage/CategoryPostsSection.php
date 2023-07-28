@@ -24,7 +24,7 @@ class CategoryPostsSection
         }
 
         echo <<<HTML
-<section class="pt-4 pb-0">
+<section class="pt-4 pb-0" id="category-posts">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -68,11 +68,11 @@ HTML;
                     {$category}
                 </a>
     
-                <h4>
+                <h5>
                     <a href="{$link}" class="btn-link stretched-link text-reset fw-bold">
                         {$post->post_title}
                     </a>
-                </h4>
+                </h5>
             </div>
         </div>
     </div>

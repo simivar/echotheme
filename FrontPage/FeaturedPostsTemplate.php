@@ -21,7 +21,7 @@ class FeaturedPostsTemplate
         $sixthPost = self::renderSinglePost($posts[5]);
 
         echo <<<HTML
-<section class="pt-4 pb-0">
+<section class="pt-4 pb-0" id="featured-posts">
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-8">
@@ -71,9 +71,9 @@ HTML;
         }
         $categoryColor = ArbitraryStringToHexColor::generate($category);
 
-        $smallTitleClass = '';
+        $heading = 'h1';
         if ($isSmaller) {
-            $smallTitleClass = 'fs-4';
+            $heading = 'h5';
             $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-small');
         } else {
             $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured');
@@ -88,11 +88,11 @@ HTML;
                 {$category}
             </a>
 
-            <h1 class="card-title {$smallTitleClass}">
+            <{$heading} class="card-title">
                 <a href="{$link}" class="btn-link stretched-link text-reset">
                     {$post->post_title}
                 </a>
-            </h1>
+            </{$heading}>
         </div>
     </div>
 </div>
