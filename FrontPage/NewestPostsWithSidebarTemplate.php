@@ -24,21 +24,21 @@ class NewestPostsWithSidebarTemplate
 <section class="pt-4 pb-0">
     <div class="container">
         <div class="row row-cols-2">
-            <div class="col-8">
+            <div class="col-12 col-lg-8">
                 <div class="mb-4 row">
                     <h2 class="m-0 mb-2">Bądź na bieżąco</h2>
                 </div>
                 {$postsHtml}
                 <div class="row mb-4 justify-content-center">
-                    <div class="col-2 d-flex">
-                        <button type="button" class="btn btn-danger btn-animation w-100 text-uppercase rounded-pill" data-bs-dismiss="alert" aria-label="Close">
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-12 d-flex">
+                        <a href="/?post_type=post" type="button" class="btn btn-danger btn-animation w-100 text-uppercase rounded-pill" aria-label="Close">
                             <span aria-hidden="true">Więcej</span>
                             <i class="bi bi-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <div class="mb-4">
                     <div class="row mb-4">
                         <h2 class="m-0 col">Warto przeczytać</h2>
@@ -73,18 +73,18 @@ HTML;
 
         return <<<HTML
 <div class="row mb-4">
-    <div class="col-5">
+    <div class="col-12 col-md-6 col-lg-5">
         <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3">
             <img class="card-img" src="{$thumbnail}" alt="">
         </a>
     </div>
     <div class="col">
         <div class="flex-column d-flex align-items-start justify-content-center h-100">
-            <a href="{$categoryUrl}" class="badge bg-danger text-decoration-none mb-2" style="background-color: #{$categoryColor} !important;">
+            <a href="{$categoryUrl}" class="badge bg-danger text-decoration-none my-2" style="background-color: #{$categoryColor} !important;">
                 {$category}
             </a>
 
-            <h4>
+            <h4 class="fs-">
                 <a href="{$link}" class="btn-link stretched-link text-reset fw-bold">
                     {$post->post_title}
                 </a>
