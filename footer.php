@@ -40,7 +40,7 @@
                 <ul class="nav justify-content-center">
                     <?php foreach($headerNavigation as $item): ?>
                     <li class="nav-item px-2">
-                        <a class="nav-link btn-link text-white <?php echo $item->isActive() ? 'active' : ''; ?>" href="<?php echo $item->getUrl(); ?>">
+                        <a class="nav-link btn-link text-white <?php echo $item->isActive() ? 'fw-bold' : ''; ?>" href="<?php echo $item->getUrl(); ?>">
                             <?php echo $item->getTitle(); ?>
                         </a>
                     </li>

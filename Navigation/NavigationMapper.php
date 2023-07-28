@@ -45,6 +45,15 @@ class NavigationMapper
             return;
         }
 
+        if ($queriedObject instanceof WP_Post) {
+            $queriedObject = get_the_category($queriedObject->ID);
+            if (empty($queriedObject)) {
+                return;
+            }
+
+            $queriedObject = $queriedObject[0];
+        }
+
         self::$currentCategoryId = $queriedObject->term_id;
     }
 
