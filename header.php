@@ -40,7 +40,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <?php foreach($item->getChildren() as $child): ?>
-                                <li><a class="dropdown-item" href="<?php echo $child->getUrl(); ?>"><?php echo $child->getTitle(); ?></a></li>
+                                <li>
+                                    <a class="dropdown-item <?php echo $child->isActive() ? 'active' : ''; ?>" href="<?php echo $child->getUrl(); ?>">
+                                        <?php echo $child->getTitle(); ?>
+                                    </a>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     </li>
