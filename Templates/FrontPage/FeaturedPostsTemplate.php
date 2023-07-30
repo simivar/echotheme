@@ -2,7 +2,12 @@
 
 declare(strict_types=1);
 
-namespace echotheme\FrontPage;
+namespace echotheme\Templates\FrontPage;
+
+use WP_Term;
+use function esc_url;
+use function get_the_category;
+use function get_the_post_thumbnail_url;
 
 class FeaturedPostsTemplate
 {
@@ -12,7 +17,7 @@ class FeaturedPostsTemplate
     public static function render(array $posts): void
     {
         if (count($posts) < 6) {
-            \echotheme\FrontPage\NoEnoughPostsTemplate::render(6);
+            echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(6, true);
 
             return;
         }
@@ -73,7 +78,7 @@ HTML;
             $categoryUrl = esc_url(get_category_link($category[0]));
             $category = $category[0]->name;
         }
-        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
         $heading = 'h1';
         if ($isSmaller) {

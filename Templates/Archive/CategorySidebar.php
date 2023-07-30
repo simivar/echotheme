@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace echotheme\Category;
+namespace echotheme\Templates\Archive;
+
+use function esc_url;
 
 class CategorySidebar
 {
@@ -24,7 +26,7 @@ class CategorySidebar
     private static function renderSingle(\stdClass $data): string
     {
         $categoryUrl = esc_url(get_category_link($data->id));
-        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($data->name);
+        $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($data->name);
 
         return <<<HTML
         <div class="rounded p-2 mb-2" style="background-color: #{$categoryColor}25">

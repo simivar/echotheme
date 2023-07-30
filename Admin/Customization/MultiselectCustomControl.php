@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace echotheme\Customization;
+namespace echotheme\Admin\Customization;
+
+use function esc_attr;
+use function esc_html;
+use function selected;
 
 if (class_exists('WP_Customize_Control')) {
     /**

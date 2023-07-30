@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-namespace echotheme\FrontPage;
+namespace echotheme\Templates\FrontPage;
 
-class CategoryPostsSection
+use WP_Term;
+use function esc_url;
+use function get_category;
+use function get_posts;
+use function get_the_post_thumbnail_url;
+
+class CategoryPostsSectionTemplate
 {
     public static function render(int $categoryId): void
     {
@@ -53,7 +59,7 @@ HTML;
         $link = esc_url(get_permalink($post));
         $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
 
-        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
         return <<<HTML
 

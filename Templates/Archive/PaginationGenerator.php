@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
-namespace echotheme\Category;
+namespace echotheme\Templates\Archive;
+
+use function get_pagenum_link;
+use function get_query_var;
+use function is_archive;
 
 class PaginationGenerator
 {
-    public static function generate(int $range = 2): string
+    public static function generate(): string
     {
         if (!is_archive()) {
             return '';
@@ -19,7 +23,8 @@ class PaginationGenerator
             return '';
         }
 
-        if ((int)$pages === 1) {
+        $pages = (int)$pages;
+        if ($pages === 1) {
             return '';
         }
 

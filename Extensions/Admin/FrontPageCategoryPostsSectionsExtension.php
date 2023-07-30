@@ -18,14 +18,14 @@ final class FrontPageCategoryPostsSectionsExtension {
         ]);
 
         $wp_customize->add_control(
-            new \echotheme\Customization\MultiselectCustomControl(
+            new \echotheme\Admin\Customization\MultiselectCustomControl(
                 $wp_customize, 'frontpage_categories', array(
                     'label' => 'Category posts sections',
                     'description' => 'If you want to select multiple categories, hold CTRL and click on them.',
                     'section' => 'front_page',
                     'settings' => 'frontpage_categories',
                     'type'     => 'multiple-select',
-                    'choices'	=> \echotheme\Utils\CategoriesMapper::mapAsIdToNameArray(),
+                    'choices'	=> \echotheme\Services\CategoriesMapper::mapAsIdToNameArray(),
                 )
             )
         );

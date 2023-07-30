@@ -8,19 +8,19 @@ $category = get_category($categoryId);
 $count = $category->category_count;
 
 if (!have_posts()) {
-    \echotheme\FrontPage\NoEnoughPostsTemplate::render(1);
+    \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
     get_footer();
 
     return;
 }
 
-$categories = \echotheme\Category\GetCategoriesWithRecentPosts::get(5, $categoryId);
-$categoriesWithSidebar = \echotheme\Category\CategorySidebar::get($categories);
+$categories = \echotheme\Services\GetCategoriesWithRecentPosts::get(5, $categoryId);
+$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::get($categories);
 
 global $wp_query;
 $myposts = $wp_query->get_posts();
 
-$postsWithSidebar = \echotheme\Pages\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
+$postsWithSidebar = \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
 
 echo <<<HTML
 <section class="pt-4 pb-0">
@@ -41,7 +41,7 @@ $postsWithSidebar
 HTML;
 
 
-$pagination = \echotheme\Category\PaginationGenerator::generate();
+$pagination = \echotheme\Templates\Archive\PaginationGenerator::generate();
 echo <<<HTML
 <section class="pt-4 pb-0">
     <div class="container">

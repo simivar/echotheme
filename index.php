@@ -10,16 +10,16 @@ $posts = get_posts(
 );
 
 if (count($posts) === 0) {
-    \echotheme\FrontPage\NoEnoughPostsTemplate::render();
+    \echotheme\Templates\Generic\NoEnoughPostsTemplate::render();
     get_footer();
     return;
 }
 
 $featuredPosts = array_slice($posts, 0, 6);
-\echotheme\FrontPage\FeaturedPostsTemplate::render($featuredPosts);
+\echotheme\Templates\FrontPage\FeaturedPostsTemplate::render($featuredPosts);
 
 $featuredPosts = array_slice($posts, 6);
-\echotheme\FrontPage\NewestPostsWithCarouselSidebar::render($featuredPosts);
+\echotheme\Templates\FrontPage\NewestPostsWithCarouselSidebar::render($featuredPosts);
 
 echo <<<HTML
 <section class="pt-4 pb-0">
@@ -44,7 +44,7 @@ HTML;
 $categoryPostsSectionsIds = get_theme_mod('frontpage_categories');
 if (count($categoryPostsSectionsIds) > 0) {
     foreach ($categoryPostsSectionsIds as $categoryPostsSectionId) {
-        \echotheme\FrontPage\CategoryPostsSection::render($categoryPostsSectionId);
+        \echotheme\Templates\FrontPage\CategoryPostsSectionTemplate::render($categoryPostsSectionId);
     }
 }
 

@@ -2,7 +2,12 @@
 
 declare(strict_types=1);
 
-namespace echotheme\FrontPage;
+namespace echotheme\Templates\FrontPage;
+
+use WP_Term;
+use function esc_url;
+use function get_the_category;
+use function get_the_post_thumbnail_url;
 
 class NewestPostsWithCarouselSidebar
 {
@@ -12,14 +17,12 @@ class NewestPostsWithCarouselSidebar
     public static function render(array $posts): void
     {
         if (count($posts) < 1) {
-            \echotheme\FrontPage\NoEnoughPostsTemplate::render(1);
-
-            return;
+            $posts = [];
         }
 
         $carousel = self::renderCarousel();
 
-        echo \echotheme\Pages\NewestPostsWithSidebarTemplate::render($posts, $carousel);
+        echo \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($posts, $carousel);
     }
 
     /**
@@ -87,7 +90,7 @@ HTML;
             $categoryUrl = esc_url(get_category_link($category[0]));
             $category = $category[0]->name;
         }
-        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
         return <<<HTML
 <div class="carousel-item $class">
