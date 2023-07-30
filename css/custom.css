@@ -97,9 +97,10 @@
 }
 
 #category-posts img {
-    min-height: 185px;
+    height: 185px;
 }
 
 #featured-posts img {
     min-height: 265px;
+    max-height: 548px;
 }
