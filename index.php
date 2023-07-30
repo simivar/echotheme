@@ -19,7 +19,7 @@ $featuredPosts = array_slice($posts, 0, 6);
 FeaturedPostsTemplate::render($featuredPosts);
 
 $featuredPosts = array_slice($posts, 6);
-NewestPostsWithSidebarTemplate::render($featuredPosts);
+NewestPostsWithCarouselSidebar::render($featuredPosts);
 
 $categoryPostsSectionsIds = get_theme_mod('frontpage_categories');
 if (count($categoryPostsSectionsIds) > 0) {
