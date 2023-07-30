@@ -20,7 +20,7 @@ $categoriesWithSidebar = CategorySidebar::get($categories);
 global $wp_query;
 $myposts = $wp_query->get_posts();
 
-$postsWithSidebar = NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
+$postsWithSidebar = \echotheme\Pages\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
 
 echo <<<HTML
 <section class="pt-4 pb-0">

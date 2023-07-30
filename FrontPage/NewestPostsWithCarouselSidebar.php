@@ -3,7 +3,7 @@
 class NewestPostsWithCarouselSidebar
 {
     /**
-     * @param WP_Post[] $posts
+     * @param \WP_Post[] $posts
      */
     public static function render(array $posts): void
     {
@@ -15,15 +15,15 @@ class NewestPostsWithCarouselSidebar
 
         $carousel = self::renderCarousel();
 
-        echo NewestPostsWithSidebarTemplate::render($posts, $carousel);
+        echo \echotheme\Pages\NewestPostsWithSidebarTemplate::render($posts, $carousel);
     }
 
     /**
-     * @return WP_Post[]
+     * @return \WP_Post[]
      */
     private static function getPopularPostsByViews(): array
     {
-        return get_posts([
+        return \get_posts([
             'numberposts' => 4,
             'post_type' => 'post',
             'post_status' => 'publish',
@@ -69,7 +69,7 @@ class NewestPostsWithCarouselSidebar
 HTML;
     }
 
-    private static function renderSingleCarouselItem(WP_Post $post, string $class = ''): string
+    private static function renderSingleCarouselItem(\WP_Post $post, string $class = ''): string
     {
         $link = esc_url(get_permalink($post));
         $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');

@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\Pages;
+
 class NewestPostsWithSidebarTemplate
 {
     /**
-     * @param WP_Post[] $posts
+     * @param \WP_Post[] $posts
      */
     public static function render(array $posts, string $sidebarData): string
     {
         if (count($posts) < 1) {
-            NoEnoughPostsTemplate::render(1);
+            \NoEnoughPostsTemplate::render(1);
 
             return '';
         }
@@ -45,7 +49,7 @@ HTML;
 
     }
 
-    private static function renderSinglePost(WP_Post $post): string
+    private static function renderSinglePost(\WP_Post $post): string
     {
         $link = esc_url(get_permalink($post));
         $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
@@ -59,7 +63,7 @@ HTML;
             $categoryUrl = esc_url(get_category_link($category[0]));
             $category = $category[0]->name;
         }
-        $categoryColor = ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \ArbitraryStringToHexColor::generate($category);
 
         return <<<HTML
 <div class="row mb-4">
