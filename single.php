@@ -35,7 +35,7 @@ echo <<<HTML
 <section>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 text-center p-5 d-flex align-items-center">
+            <div class="col-lg-6 text-center p-5 d-flex align-items-center justify-content-center">
                 <div>
                     <div class="row w-100">
                         <div class="col">
