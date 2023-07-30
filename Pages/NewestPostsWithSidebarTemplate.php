@@ -27,14 +27,6 @@ class NewestPostsWithSidebarTemplate
                     <h2 class="m-0 mb-2">Bądź na bieżąco</h2>
                 </div>
                 {$postsHtml}
-                <div class="row mb-4 justify-content-center">
-                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-12 d-flex">
-                        <a href="/?post_type=post" type="button" class="btn btn-danger btn-animation w-100 text-uppercase rounded-pill" aria-label="Close">
-                            <span aria-hidden="true">Więcej</span>
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
             <div class="col-12 col-lg-4">
                 <div class="mb-4">
