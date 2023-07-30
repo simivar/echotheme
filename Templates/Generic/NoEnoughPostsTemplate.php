@@ -6,14 +6,14 @@ namespace echotheme\Templates\Generic;
 
 class NoEnoughPostsTemplate
 {
-    public static function render(int $requiredPosts = 0, bool $shouldReturn = false): string
+    public static function render(int $requiredPosts = 0): string
     {
         $error = 'No posts found';
         if ($requiredPosts > 0) {
             $error = "No posts found. At least {$requiredPosts} post(s) are required to display featured posts.";
         }
 
-        $html = <<<HTML
+        return <<<HTML
 <section class="pt-4 pb-0">
     <div class="container">
         <div class="row">
@@ -24,11 +24,5 @@ class NoEnoughPostsTemplate
     </div>
 </section>
 HTML;
-        if ($shouldReturn === true) {
-            return $html;
-        }
-
-        echo $html;
-        return '';
     }
 }

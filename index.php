@@ -10,7 +10,7 @@ $posts = get_posts(
 );
 
 if (count($posts) === 0) {
-    \echotheme\Templates\Generic\NoEnoughPostsTemplate::render();
+    echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render();
     get_footer();
     return;
 }

@@ -8,7 +8,7 @@ $category = get_category($categoryId);
 $count = $category->category_count;
 
 if (!have_posts()) {
-    \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
+    echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
     get_footer();
 
     return;
