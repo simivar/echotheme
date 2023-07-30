@@ -7,9 +7,14 @@ $categoryId = get_queried_object_id();
 $category = get_category($categoryId);
 $count = $category->category_count;
 
-$args = array ( 'category' => $categoryId, 'posts_per_page' => 16, 'orderby' => 'date', 'order' => 'DESC', 'post_status' => 'publish');
-$myposts = get_posts( $args );
-var_dump($myposts);die;
+if (!have_posts()) {
+}
+
+
+global $wp_query;
+$myposts = $wp_query->get_posts();
+
+$posts = NewestPostsWithSidebarTemplate::render($myposts, '');
 
 echo <<<HTML
 <section class="pt-4 pb-0">
@@ -25,6 +30,8 @@ echo <<<HTML
         </div>
     </div>
 </section>
+
+$posts
 HTML;
 
 get_footer();

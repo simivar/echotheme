@@ -83,7 +83,7 @@ HTML;
             </a>
 
             <h4>
-                <a href="{$link}" class="btn-link stretched-link text-reset fw-bold">
+                <a href="{$link}" class="btn-link text-reset fw-bold">
                     {$post->post_title}
                 </a>
             </h4>
