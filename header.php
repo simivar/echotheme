@@ -14,7 +14,6 @@
     <?php wp_resource_hints(); ?>
     <?php wp_enqueue_scripts(); ?>
     <?php _wp_render_title_tag(); ?>
-    <?php track_post_views(); ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
