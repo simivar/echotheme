@@ -29,7 +29,7 @@
         </a>
 
         <?php
-        $headerNavigation = NavigationMapper::getMappedMenuItems(NavigationMapper::HEADER_MENU);
+        $headerNavigation = \echotheme\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Navigation\NavigationMapper::HEADER_MENU);
         ?>
         <ul class="navbar-nav">
             <?php foreach($headerNavigation as $item): ?>

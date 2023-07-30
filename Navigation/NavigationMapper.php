@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once get_template_directory() . '/Navigation/NavigationItem.php';
+namespace echotheme\Navigation;
 
 class NavigationMapper
 {
@@ -45,7 +45,7 @@ class NavigationMapper
             return;
         }
 
-        if ($queriedObject instanceof WP_Post) {
+        if ($queriedObject instanceof \WP_Post) {
             $queriedObject = get_the_category($queriedObject->ID);
             if (empty($queriedObject)) {
                 return;
@@ -57,7 +57,7 @@ class NavigationMapper
         self::$currentCategoryId = $queriedObject->term_id;
     }
 
-    private static function mapWpPostToArray(WP_Post $item): NavigationItem {
+    private static function mapWpPostToArray(\WP_Post $item): NavigationItem {
         return new NavigationItem(
             $item->title,
             $item->url,

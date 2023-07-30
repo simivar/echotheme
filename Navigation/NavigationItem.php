@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace echotheme\Navigation;
+
 class NavigationItem
 {
     private string $title;
@@ -33,7 +35,7 @@ class NavigationItem
         return $this->isActive;
     }
 
-    public function addChildren(NavigationItem $item): void
+    public function addChildren(self $item): void
     {
         $this->children[] = $item;
     }

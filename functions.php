@@ -1,6 +1,12 @@
 <?php
 
-require_once get_template_directory() . '/Navigation/NavigationMapper.php';
+spl_autoload_register(static function($class) {
+    $path =  get_theme_root() . '/' . str_replace('\\', '/', $class) . '.php';
+    if (file_exists($path)) {
+        require_once $path;
+    }
+});
+
 require_once get_template_directory() . '/Pages/NewestPostsWithSidebarTemplate.php';
 require_once get_template_directory() . '/FrontPage/NoEnoughPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/FeaturedPostsTemplate.php';
@@ -17,9 +23,9 @@ require_once get_template_directory() . '/Category/PaginationGenerator.php';
 function register_echotheme_menus() {
     register_nav_menus(
         array(
-            NavigationMapper::HEADER_MENU => __( 'Header Menu' ),
-            NavigationMapper::FOOTER_MENU => __( 'Footer Menu' ),
-            NavigationMapper::FOOTER_TOP_MENU => __( 'Footer Small Top Menu' ),
+            \echotheme\Navigation\NavigationMapper::HEADER_MENU => __( 'Header Menu' ),
+            \echotheme\Navigation\NavigationMapper::FOOTER_MENU => __( 'Footer Menu' ),
+            \echotheme\Navigation\NavigationMapper::FOOTER_TOP_MENU => __( 'Footer Small Top Menu' ),
         )
     );
 }
