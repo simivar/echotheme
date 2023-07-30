@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\Category;
+
 class CategorySidebar
 {
     /**
@@ -15,12 +19,12 @@ class CategorySidebar
     }
 
     /**
-     * @param object{'id': string, 'name': string, 'post_date': string}|stdClass $data
+     * @param object{'id': string, 'name': string, 'post_date': string}|\stdClass $data
      */
-    private static function renderSingle(stdClass $data): string
+    private static function renderSingle(\stdClass $data): string
     {
         $categoryUrl = esc_url(get_category_link($data->id));
-        $categoryColor = ArbitraryStringToHexColor::generate($data->name);
+        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($data->name);
 
         return <<<HTML
         <div class="rounded p-2 mb-2" style="background-color: #{$categoryColor}25">

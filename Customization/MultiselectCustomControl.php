@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
+namespace echotheme\Customization;
+
 if (class_exists('WP_Customize_Control')) {
     /**
      * Class to create a custom multiselect dropdown control
      */
-    class MultiselectCustomControl extends WP_Customize_Control
+    class MultiselectCustomControl extends \WP_Customize_Control
     {
         /**
          * Render the content on the theme customizer page

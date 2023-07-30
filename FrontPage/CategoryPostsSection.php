@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\FrontPage;
+
 class CategoryPostsSection
 {
     public static function render(int $categoryId): void
@@ -44,12 +48,12 @@ HTML;
 
     }
 
-    private static function renderSinglePost(WP_Post $post, string $category, string $categoryUrl): string
+    private static function renderSinglePost(\WP_Post $post, string $category, string $categoryUrl): string
     {
         $link = esc_url(get_permalink($post));
         $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
 
-        $categoryColor = ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($category);
 
         return <<<HTML
 

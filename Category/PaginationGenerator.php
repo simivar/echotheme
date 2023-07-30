@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\Category;
+
 class PaginationGenerator
 {
     public static function generate(int $range = 2): string
     {
-        $showitems = ($range * 2) + 1;
-
         if (!is_archive()) {
             return '';
         }

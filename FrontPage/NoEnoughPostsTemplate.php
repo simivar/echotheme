@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\FrontPage;
+
 class NoEnoughPostsTemplate
 {
     public static function render(int $requiredPosts = 0): void

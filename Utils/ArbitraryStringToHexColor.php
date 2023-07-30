@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\Utils;
+
 class ArbitraryStringToHexColor
 {
     public static function generate(string $string): string

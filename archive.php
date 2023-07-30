@@ -8,14 +8,14 @@ $category = get_category($categoryId);
 $count = $category->category_count;
 
 if (!have_posts()) {
-    NoEnoughPostsTemplate::render(1);
+    \echotheme\FrontPage\NoEnoughPostsTemplate::render(1);
     get_footer();
 
     return;
 }
 
-$categories = GetCategoriesWithRecentPosts::get(5, $categoryId);
-$categoriesWithSidebar = CategorySidebar::get($categories);
+$categories = \echotheme\Category\GetCategoriesWithRecentPosts::get(5, $categoryId);
+$categoriesWithSidebar = \echotheme\Category\CategorySidebar::get($categories);
 
 global $wp_query;
 $myposts = $wp_query->get_posts();
@@ -41,7 +41,7 @@ $postsWithSidebar
 HTML;
 
 
-$pagination = PaginationGenerator::generate();
+$pagination = \echotheme\Category\PaginationGenerator::generate();
 echo <<<HTML
 <section class="pt-4 pb-0">
     <div class="container">

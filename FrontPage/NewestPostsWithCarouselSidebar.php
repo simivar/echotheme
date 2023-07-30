@@ -12,7 +12,7 @@ class NewestPostsWithCarouselSidebar
     public static function render(array $posts): void
     {
         if (count($posts) < 1) {
-            \NoEnoughPostsTemplate::render(1);
+            \echotheme\FrontPage\NoEnoughPostsTemplate::render(1);
 
             return;
         }
@@ -87,7 +87,7 @@ HTML;
             $categoryUrl = esc_url(get_category_link($category[0]));
             $category = $category[0]->name;
         }
-        $categoryColor = \ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($category);
 
         return <<<HTML
 <div class="carousel-item $class">

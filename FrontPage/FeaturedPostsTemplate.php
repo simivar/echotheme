@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+namespace echotheme\FrontPage;
+
 class FeaturedPostsTemplate
 {
     /**
-     * @param WP_Post[] $posts
+     * @param \WP_Post[] $posts
      */
     public static function render(array $posts): void
     {
         if (count($posts) < 6) {
-            NoEnoughPostsTemplate::render(6);
+            \echotheme\FrontPage\NoEnoughPostsTemplate::render(6);
 
             return;
         }
@@ -56,7 +60,7 @@ class FeaturedPostsTemplate
 HTML;
     }
 
-    private static function renderSinglePost(WP_Post $post, bool $isSmaller = true): string
+    private static function renderSinglePost(\WP_Post $post, bool $isSmaller = true): string
     {
         $link = esc_url(get_permalink($post));
 
@@ -69,7 +73,7 @@ HTML;
             $categoryUrl = esc_url(get_category_link($category[0]));
             $category = $category[0]->name;
         }
-        $categoryColor = ArbitraryStringToHexColor::generate($category);
+        $categoryColor = \echotheme\Utils\ArbitraryStringToHexColor::generate($category);
 
         $heading = 'h1';
         if ($isSmaller) {
