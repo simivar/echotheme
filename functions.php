@@ -12,6 +12,7 @@ require_once get_template_directory() . '/Posts/CountPostViews.php';
 require_once get_template_directory() . '/Customization/MultiselectCustomControl.php';
 require_once get_template_directory() . '/Category/GetCategoriesWithRecentPosts.php';
 require_once get_template_directory() . '/Category/CategorySidebar.php';
+require_once get_template_directory() . '/Category/PaginationGenerator.php';
 
 function register_echotheme_menus() {
     register_nav_menus(
