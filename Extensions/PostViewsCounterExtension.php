@@ -16,7 +16,7 @@ final class PostViewsCounterExtension
         self::trackPostViews();
     }
 
-    protected static function addPostViewsColumn(array $columns): array
+    public static function addPostViewsColumn(array $columns): array
     {
         $columns[self::ECHOTHEME_POST_VIEWS_COLUMN_NAME]  = 'Post Views';
 

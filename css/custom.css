@@ -1,3 +1,12 @@
+:root {
+    --bs-font-sans-serif: 'Rubik', sans-serif !important;
+    --bs-body-color: #595d69;
+}
+
+body {
+    font-family: 'Rubik', sans-serif !important;
+}
+
 .btn-link, .nav-link.btn-link {
     background: -webkit-gradient(linear, left top, right top, from(currentColor), to(currentColor));
     background: linear-gradient(to right, currentColor 0%, currentColor 100%);
