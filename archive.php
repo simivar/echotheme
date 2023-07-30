@@ -2,10 +2,6 @@
 
 get_header();
 
-$categoryId = get_queried_object_id();
-
-$category = get_category($categoryId);
-$count = $category->category_count;
 
 if (!have_posts()) {
     echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
@@ -14,11 +10,24 @@ if (!have_posts()) {
     return;
 }
 
-$categories = \echotheme\Services\GetCategoriesWithRecentPosts::get(5, $categoryId);
-$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::get($categories);
+$queriedObject = get_queried_object();
 
 global $wp_query;
+
+$count = $wp_query->found_posts;
 $myposts = $wp_query->get_posts();
+$description = get_the_archive_description();
+
+$title = get_the_archive_title();
+if ($queriedObject instanceof \WP_Term) {
+    $categoryId = get_queried_object_id();
+
+} else {
+    $categoryId = 0;
+}
+
+$categories = \echotheme\Services\GetCategoriesWithRecentPosts::get(5, $categoryId);
+$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::get($categories);
 
 $postsWithSidebar = \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
 
@@ -27,10 +36,10 @@ echo <<<HTML
     <div class="container">
         <div class="row">
             <div class="col-lg-9 mb-4">
-                <h1>{$category->name}</h1>
+                <h1>{$title}</h1>
                 <span class="badge text-bg-success fs-6 my-2">{$count} posts</span>
                 <p>
-                    {$category->description}
+                    {$description}
                 </p>
             </div>
         </div>
