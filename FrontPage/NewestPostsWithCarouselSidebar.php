@@ -15,8 +15,7 @@ class NewestPostsWithCarouselSidebar
 
         $carousel = self::renderCarousel();
 
-        NewestPostsWithSidebarTemplate::render($posts, $carousel);
-
+        echo NewestPostsWithSidebarTemplate::render($posts, $carousel);
     }
 
     /**

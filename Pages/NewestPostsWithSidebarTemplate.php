@@ -5,12 +5,12 @@ class NewestPostsWithSidebarTemplate
     /**
      * @param WP_Post[] $posts
      */
-    public static function render(array $posts, string $sidebarData): void
+    public static function render(array $posts, string $sidebarData): string
     {
         if (count($posts) < 1) {
             NoEnoughPostsTemplate::render(1);
 
-            return;
+            return '';
         }
 
         $postsHtml = '';
@@ -18,7 +18,7 @@ class NewestPostsWithSidebarTemplate
             $postsHtml .= self::renderSinglePost($post);
         }
 
-        echo <<<HTML
+        return <<<HTML
 <section class="pt-4 pb-0">
     <div class="container">
         <div class="row row-cols-2">
