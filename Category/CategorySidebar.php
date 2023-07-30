@@ -23,8 +23,8 @@ class CategorySidebar
         $categoryColor = ArbitraryStringToHexColor::generate($data->name);
 
         return <<<HTML
-        <div class="d-flex justify-content-between align-items-center bg-opacity-10 rounded p-2 position-relative mb-2" style="background-color: #{$categoryColor}25">
-            <a href="{$categoryUrl}" class="stretched-link text-decoration-none" style="color: #{$categoryColor}">
+        <div class="rounded p-2 mb-2" style="background-color: #{$categoryColor}25">
+            <a href="{$categoryUrl}" class="text-decoration-none" style="color: #{$categoryColor}">
                 <h6 class="m-0">{$data->name}</h6>
             </a>
         </div>
