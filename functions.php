@@ -10,6 +10,8 @@ require_once get_template_directory() . '/Utils/ArbitraryStringToHexColor.php';
 require_once get_template_directory() . '/Utils/CategoriesMapper.php';
 require_once get_template_directory() . '/Posts/CountPostViews.php';
 require_once get_template_directory() . '/Customization/MultiselectCustomControl.php';
+require_once get_template_directory() . '/Category/GetCategoriesWithRecentPosts.php';
+require_once get_template_directory() . '/Category/CategorySidebar.php';
 
 function register_echotheme_menus() {
     register_nav_menus(

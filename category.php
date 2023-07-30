@@ -8,13 +8,19 @@ $category = get_category($categoryId);
 $count = $category->category_count;
 
 if (!have_posts()) {
+    NoEnoughPostsTemplate::render(1);
+    get_footer();
+
+    return;
 }
 
+$categories = GetCategoriesWithRecentPosts::get(5, $categoryId);
+$categoriesWithSidebar = CategorySidebar::get($categories);
 
 global $wp_query;
 $myposts = $wp_query->get_posts();
 
-$posts = NewestPostsWithSidebarTemplate::render($myposts, '');
+$postsWithSidebar = NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
 
 echo <<<HTML
 <section class="pt-4 pb-0">
@@ -31,7 +37,7 @@ echo <<<HTML
     </div>
 </section>
 
-$posts
+$postsWithSidebar
 HTML;
 
 get_footer();
