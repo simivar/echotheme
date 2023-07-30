@@ -45,6 +45,10 @@ class NavigationMapper
             return;
         }
 
+        if ($queriedObject instanceof \WP_User) {
+            return;
+        }
+
         if ($queriedObject instanceof \WP_Post) {
             $queriedObject = get_the_category($queriedObject->ID);
             if (empty($queriedObject)) {
