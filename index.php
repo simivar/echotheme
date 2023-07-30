@@ -19,7 +19,7 @@ $featuredPosts = array_slice($posts, 0, 6);
 FeaturedPostsTemplate::render($featuredPosts);
 
 $featuredPosts = array_slice($posts, 6);
-NewestPostsWithCarouselSidebar::render($featuredPosts);
+\echotheme\FrontPage\NewestPostsWithCarouselSidebar::render($featuredPosts);
 
 echo <<<HTML
 <section class="pt-4 pb-0">

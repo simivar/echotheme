@@ -7,10 +7,8 @@ spl_autoload_register(static function($class) {
     }
 });
 
-require_once get_template_directory() . '/Pages/NewestPostsWithSidebarTemplate.php';
 require_once get_template_directory() . '/FrontPage/NoEnoughPostsTemplate.php';
 require_once get_template_directory() . '/FrontPage/FeaturedPostsTemplate.php';
-require_once get_template_directory() . '/FrontPage/NewestPostsWithCarouselSidebar.php';
 require_once get_template_directory() . '/FrontPage/CategoryPostsSection.php';
 require_once get_template_directory() . '/Utils/ArbitraryStringToHexColor.php';
 require_once get_template_directory() . '/Utils/CategoriesMapper.php';
