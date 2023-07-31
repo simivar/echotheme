@@ -95,7 +95,7 @@ HTML;
         return <<<HTML
 <div class="carousel-item $class">
     <div class="card text-light card-img-scale w-100 overflow-hidden">
-        <img src="{$thumbnail}" class="d-block card-img h-100" alt="...">
+        <img src="{$thumbnail}" class="d-block card-img h-100 img-fluid object-fit-fill" alt="...">
         <div class="card-img-overlay d-flex">
             <div class="w-100 mt-auto">
                 <a href="{$categoryUrl}" class="badge mb-2" style="background-color: #{$categoryColor} !important;">
