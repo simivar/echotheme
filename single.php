@@ -6,6 +6,7 @@ $title = the_title('', '', false);
 $thumbnailUrl = get_the_post_thumbnail(null, 'full', ['class' => 'img-fluid w-100 h-100 object-fit-cover']);
 
 $categoriesHtml = '';
+$otherArticlesHtml = '';
 
 /** @var \WP_Term[] $categories */
 $categories = get_the_category();
@@ -17,6 +18,8 @@ foreach ($categories as $category) {
     $categoriesHtml .= <<<HTML
 <a href="{$categoryUrl}" class="badge bg-text-decoration-none" style="color: #{$categoryColor}">{$categoryName}</a>
 HTML;
+
+    $otherArticlesHtml .= \echotheme\Templates\FrontPage\CategoryPostsSectionTemplate::render($category->term_id);
 }
 
 global $post;
@@ -30,6 +33,19 @@ $content = get_the_content();
 $content = apply_filters( 'the_content', $content );
 $content = str_replace( ']]>', ']]&gt;', $content );
 
+$tags = get_the_tags();
+
+$tagsHtml = '';
+
+if ($tags) {
+    foreach ($tags as $tag) {
+        $tagsHtml .= sprintf(
+            '<a href="%s" class="border rounded-pill me-2 px-4 py-2 fw-semibold text-reset fs-7 text-uppercase">%s</a>',
+            esc_attr(get_tag_link($tag->term_id)),
+            $tag->name,
+        );
+    }
+}
 
 echo <<<HTML
 <section>
@@ -64,12 +80,20 @@ echo <<<HTML
 <article>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col col-xl-8 col-lg-10 p-5 fs-5">
+            <div class="col col-xl-8 col-lg-10 px-5 mt-5 fs-5">
                 $content
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col col-xl-8 col-lg-10 px-5 mb-5">
+                $tagsHtml
+                <hr />
             </div>
         </div>
     </div>
 </article>
+
+$otherArticlesHtml
 HTML;
 
 get_footer();

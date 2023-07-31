@@ -12,7 +12,7 @@ use function get_the_post_thumbnail_url;
 
 class CategoryPostsSectionTemplate
 {
-    public static function render(int $categoryId): void
+    public static function render(int $categoryId): string
     {
         $posts = get_posts([
             'numberposts' => 4,
@@ -21,7 +21,7 @@ class CategoryPostsSectionTemplate
             'category' => $categoryId,
         ]);
         if (count($posts) < 1) {
-            return;
+            return '';
         }
 
         /** @var WP_Term $categoryData */
@@ -33,7 +33,7 @@ class CategoryPostsSectionTemplate
             $postsHtml .= self::renderSinglePost($post, $categoryData->name, $categoryLink);
         }
 
-        echo <<<HTML
+        return <<<HTML
 <section class="pt-4 pb-0" id="category-posts">
     <div class="container">
         <div class="row">
@@ -79,7 +79,7 @@ HTML;
                 </a>
     
                 <h5>
-                    <a href="{$link}" class="btn-link stretched-link text-reset fw-bold">
+                    <a href="{$link}" class="btn-link text-reset fw-bold">
                         {$post->post_title}
                     </a>
                 </h5>
