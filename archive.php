@@ -3,14 +3,24 @@
 get_header();
 
 
+$queriedObject = get_queried_object();
+if ($queriedObject instanceof \WP_Term) {
+    $categoryId = get_queried_object_id();
+} else {
+    $categoryId = 0;
+}
+$categories = \echotheme\Services\GetCategoriesWithRecentPosts::get(5, $categoryId);
+$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::get($categories);
+
 if (!have_posts()) {
-    echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
+    echo \echotheme\Templates\Generic\ContainerWithSidebarTemplate::render(
+        \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1),
+        $categoriesWithSidebar,
+    );
     get_footer();
 
     return;
 }
-
-$queriedObject = get_queried_object();
 
 global $wp_query;
 
@@ -19,15 +29,7 @@ $myposts = $wp_query->get_posts();
 $description = get_the_archive_description();
 
 $title = get_the_archive_title();
-if ($queriedObject instanceof \WP_Term) {
-    $categoryId = get_queried_object_id();
 
-} else {
-    $categoryId = 0;
-}
-
-$categories = \echotheme\Services\GetCategoriesWithRecentPosts::get(5, $categoryId);
-$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::get($categories);
 
 $postsWithSidebar = \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
 
