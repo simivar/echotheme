@@ -38,31 +38,35 @@
         <?php
         $headerNavigation = \echotheme\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Navigation\NavigationMapper::HEADER_MENU);
         ?>
-        <ul class="navbar-nav">
-            <?php foreach($headerNavigation as $item): ?>
-                <?php if ($item->hasChildren()): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $item->getTitle(); ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <?php foreach($item->getChildren() as $child): ?>
-                                <li>
-                                    <a class="dropdown-item <?php echo $child->isActive() ? 'active' : ''; ?>" href="<?php echo $child->getUrl(); ?>">
-                                        <?php echo $child->getTitle(); ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold <?php echo $item->isActive() ? 'active' : ''; ?>" aria-current="page" href="<?php echo $item->getUrl(); ?>">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <ul class="navbar-nav collapse navbar-collapse flex-sm-grow-0" id="navbarToggler">
+                <?php foreach($headerNavigation as $item): ?>
+                    <?php if ($item->hasChildren()): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo $item->getTitle(); ?>
                             </a>
+                            <ul class="dropdown-menu">
+                                <?php foreach($item->getChildren() as $child): ?>
+                                    <li>
+                                        <a class="dropdown-item <?php echo $child->isActive() ? 'active' : ''; ?>" href="<?php echo $child->getUrl(); ?>">
+                                            <?php echo $child->getTitle(); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
                         </li>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+                    <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold <?php echo $item->isActive() ? 'active' : ''; ?>" aria-current="page" href="<?php echo $item->getUrl(); ?>">
+                                    <?php echo $item->getTitle(); ?>
+                                </a>
+                            </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
 </nav>
