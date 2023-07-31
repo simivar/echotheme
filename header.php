@@ -25,8 +25,12 @@
     <div class="container">
         <a class="navbar-brand" href="<?php echo esc_url(home_url( '/' )); ?>">
             <?php
-            $custom_logo_id = get_theme_mod('custom_logo');
-            $image = wp_get_attachment_image_src($custom_logo_id , [415, 45])[0];
+            if (has_custom_logo()) {
+                $custom_logo_id = get_theme_mod('custom_logo');
+                $image = wp_get_attachment_image_src($custom_logo_id , [415, 45])[0];
+            } else {
+                $image = get_template_directory_uri() . '/assets/images/logo.webp';
+            }
             ?>
             <img src="<?php echo $image; ?>" />
         </a>

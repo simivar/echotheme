@@ -24,6 +24,9 @@ class NavigationMapper
         }
 
         $menuItems = wp_get_nav_menu_items($existingMenuLocations[$menuName]);
+        if ($menuItems === false) {
+            return [];
+        }
 
         $return = [];
         foreach ($menuItems as $item) {

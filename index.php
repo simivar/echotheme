@@ -42,7 +42,7 @@ HTML;
 
 
 $categoryPostsSectionsIds = get_theme_mod('frontpage_categories');
-if (count($categoryPostsSectionsIds) > 0) {
+if (is_array($categoryPostsSectionsIds) && count($categoryPostsSectionsIds) > 0) {
     foreach ($categoryPostsSectionsIds as $categoryPostsSectionId) {
         echo \echotheme\Templates\FrontPage\CategoryPostsSectionTemplate::render($categoryPostsSectionId);
     }
