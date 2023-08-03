@@ -14,7 +14,7 @@ class NoEnoughPostsTemplate
         }
 
         return <<<HTML
-<section class="pt-4 pb-0">
+<section class="pt-4 pb-0 justify">
     <div class="container">
         <div class="row">
             <div class="col">
