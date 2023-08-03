@@ -49,7 +49,7 @@ class NewestPostsWithSidebarTemplate
 <div class="row mb-4">
     <div class="col-12 col-md-6 col-lg-5">
         <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3">
-            <img class="card-img" src="{$thumbnail}" alt="">
+            <img class="card-img" src="{$thumbnail}" alt="" loading="lazy">
         </a>
     </div>
     <div class="col">

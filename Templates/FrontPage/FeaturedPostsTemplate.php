@@ -90,7 +90,7 @@ HTML;
 
         return <<<HTML
 <div class="card text-light card-img-scale w-100 h-100 overflow-hidden">
-    <img src="{$thumbnail}" class="card-img h-100" alt="...">
+    <img src="{$thumbnail}" class="card-img h-100" alt="..." loading="lazy">
     <div class="card-img-overlay d-flex">
         <div class="w-100 mt-auto">
             <a href="{$categoryUrl}" class="badge text-reset text-decoration-none mb-2" style="background-color: #{$categoryColor} !important;">

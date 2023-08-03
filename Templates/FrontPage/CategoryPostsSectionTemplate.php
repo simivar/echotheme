@@ -67,7 +67,7 @@ HTML;
     <div class="row">
         <div class="col">
             <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3">
-                <img class="card-img" src="{$thumbnail}" alt="">
+                <img class="card-img" src="{$thumbnail}" alt="" loading="lazy">
             </a>
         </div>
     </div>
