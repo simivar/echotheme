@@ -102,7 +102,7 @@ HTML;
         if ($currentPage === 1) {
             return <<<HTML
             <li class="page-item disabled">
-              <span class="page-link">Previous</span>
+              <span class="page-link">Poprzednia</span>
             </li>
             HTML;
         }
@@ -110,7 +110,7 @@ HTML;
         $link = get_pagenum_link($currentPage - 1);
         return <<<HTML
         <li class="page-item">
-          <span class="page-link"><a href="{$link}">Previous</a></span>
+          <span class="page-link"><a href="{$link}">Poprzednia</a></span>
         </li>
         HTML;
     }
@@ -120,7 +120,7 @@ HTML;
         if ($currentPage === $maxPages) {
             return <<<HTML
             <li class="page-item disabled">
-              <span class="page-link">Next</span>
+              <span class="page-link">Następna</span>
             </li>
             HTML;
         }
@@ -128,7 +128,7 @@ HTML;
         $link = get_pagenum_link($currentPage + 1);
         return <<<HTML
         <li class="page-item">
-          <span class="page-link"><a href="{$link}">Next</a></span>
+          <span class="page-link"><a href="{$link}">Następna</a></span>
         </li>
         HTML;
     }

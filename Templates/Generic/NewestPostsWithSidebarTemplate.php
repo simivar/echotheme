@@ -15,7 +15,7 @@ class NewestPostsWithSidebarTemplate
     /**
      * @param WP_Post[] $posts
      */
-    public static function render(array $posts, string $sidebarData): string
+    public static function render(array $posts, string $sidebarData, string $title = '', string $description = ''): string
     {
         if (count($posts) < 1) {
             $postsHtml = \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
@@ -26,7 +26,7 @@ class NewestPostsWithSidebarTemplate
             }
         }
 
-        return ContainerWithSidebarTemplate::render($postsHtml, $sidebarData);
+        return ContainerWithSidebarTemplate::render($postsHtml, $sidebarData, $title, $description);
     }
 
     private static function renderSinglePost(WP_Post $post): string

@@ -28,29 +28,14 @@ $count = $wp_query->found_posts;
 $myposts = $wp_query->get_posts();
 $description = get_the_archive_description();
 
-$title = get_the_archive_title();
-
-
-$postsWithSidebar = \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar);
-
-echo <<<HTML
-<section class="pt-4 pb-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 mb-4">
-                <h1>{$title}</h1>
-                <span class="badge text-bg-success fs-6 my-2">{$count} posts</span>
-                <p>
-                    {$description}
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-$postsWithSidebar
+$postsBadge = <<<HTML
+<span class="badge text-bg-success fs-6 mt-2 ms-2 position-absolute">{$count} posts</span>
 HTML;
 
+
+$title = get_the_archive_title() . $postsBadge;
+
+echo \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar, $title, $description);
 
 $pagination = \echotheme\Templates\Archive\PaginationGenerator::generate();
 echo <<<HTML
