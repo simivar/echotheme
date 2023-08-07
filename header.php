@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
+    <meta name="description" content="<?php bloginfo('description') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/custom.css'); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -18,6 +19,7 @@
     <?php wp_resource_hints(); ?>
     <?php wp_enqueue_scripts(); ?>
     <?php _wp_render_title_tag(); ?>
+
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -32,7 +34,7 @@
                 $image = get_template_directory_uri() . '/assets/images/logo.webp';
             }
             ?>
-            <img src="<?php echo $image; ?>" />
+            <img src="<?php echo $image; ?>" alt="EchoTrybun.pl logo" />
         </a>
 
         <?php

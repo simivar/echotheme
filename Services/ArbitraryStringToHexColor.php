@@ -16,10 +16,13 @@ class ArbitraryStringToHexColor
             $hash += ord($string[$i]);
         }
 
-        // Generate color components
-        $r = ($hash * 123) % 256;
-        $g = ($hash * 456) % 256;
-        $b = ($hash * 789) % 256;
+        // Factor to make the color darker (value between 0 and 1)
+        $darkFactor = 0.6;
+
+        // Generate color components, and apply the dark factor
+        $r = (int)(($hash * 123) % 256 * $darkFactor);
+        $g = (int)(($hash * 456) % 256 * $darkFactor);
+        $b = (int)(($hash * 789) % 256 * $darkFactor);
 
         // Convert them to hex and ensure they are 2 characters long
         $r = str_pad(dechex($r), 2, "0", STR_PAD_LEFT);

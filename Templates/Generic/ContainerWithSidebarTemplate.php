@@ -27,7 +27,7 @@ class ContainerWithSidebarTemplate
             <div class="col-12 col-lg-4">
                 <div class="mb-4">
                     <div class="row mb-4">
-                        <h2 class="m-0 col">Warto przeczytać</h2>
+                        <h4 class="m-0 col fs-3">Warto przeczytać</h4>
                     </div>
                     <div class="row">
                         {$sidebarHtml}

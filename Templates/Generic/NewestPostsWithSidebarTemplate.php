@@ -45,24 +45,28 @@ class NewestPostsWithSidebarTemplate
         }
         $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
+        $escapedTitle = esc_attr(strip_tags($post->post_title));
+
         return <<<HTML
 <div class="row mb-4">
     <div class="col-12 col-md-6 col-lg-5">
-        <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3">
-            <img class="card-img" src="{$thumbnail}" alt="" loading="lazy">
+        <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3" aria-label="{$escapedTitle}">
+            <img class="card-img" src="{$thumbnail}" alt="{$escapedTitle}" loading="lazy">
         </a>
     </div>
     <div class="col">
         <div class="flex-column d-flex align-items-start justify-content-center h-100">
-            <a href="{$categoryUrl}" class="badge bg-danger text-decoration-none my-2" style="background-color: #{$categoryColor} !important;">
+            <a href="{$categoryUrl}" class="badge bg-danger text-decoration-none my-2" 
+            style="background-color: #{$categoryColor} !important;"
+            aria-label="Zobacz wpisy z kategorii {$category}">
                 {$category}
             </a>
 
-            <h4>
+            <h3 class="fs-5">
                 <a href="{$link}" class="btn-link text-reset fw-bold">
                     {$post->post_title}
                 </a>
-            </h4>
+            </h3>
         </div>
     </div>
 </div>

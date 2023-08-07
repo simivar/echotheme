@@ -24,14 +24,18 @@
                         $image = get_template_directory_uri() . '/assets/images/logo.webp';
                     }
                     ?>
-                    <img src="<?php echo $image; ?>" class="img-fluid"/>
+                    <img src="<?php echo $image; ?>" class="img-fluid" alt="EchoTrybun.pl logo" />
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <a href="<?php echo esc_url(get_theme_mod('facebook')); ?>" class="text-white btn-link fw-bold fs-3" target="_blank">
+                <a href="<?php echo esc_url(get_theme_mod('facebook')); ?>"
+                   class="text-white btn-link fw-bold fs-3" target="_blank" rel="nofollow"
+                    aria-label="Odwiedź nas na Facebook">
                     <i class="bi bi-facebook"></i>
                 </a>
-                <a href="<?php echo esc_url(get_theme_mod('instagram')); ?>" class="text-white btn-link fw-bold fs-3 ms-4">
+                <a href="<?php echo esc_url(get_theme_mod('instagram')); ?>"
+                   class="text-white btn-link fw-bold fs-3 ms-4" target="_blank" rel="nofollow"
+                   aria-label="Sprawdź nasz profil na Instagram">
                     <i class="bi bi-instagram"></i>
                 </a>
             </div>
