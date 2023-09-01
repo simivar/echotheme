@@ -12,8 +12,6 @@ final class PostViewsCounterExtension
     {
         add_filter('manage_post_posts_columns', [self::class, 'addPostViewsColumn']);
         add_action('manage_post_posts_custom_column', [self::class, 'showPostViews'], 10, 2);
-
-        self::trackPostViews();
     }
 
     public static function addPostViewsColumn(array $columns): array
@@ -46,12 +44,12 @@ final class PostViewsCounterExtension
 
     public static function trackPostViews(): void
     {
-        if (!is_single()) {
+        global $post;
+        $postId = $post?->ID;
+        if (!$postId) {
             return;
         }
 
-        global $post;
-        $postId = $post->ID;
 
         self::incrementPostView($postId);
     }

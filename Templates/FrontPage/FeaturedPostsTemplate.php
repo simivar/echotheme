@@ -81,8 +81,10 @@ HTML;
         $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
         $heading = 'h1';
+        $class = '';
         if ($isSmaller) {
-            $heading = 'h5';
+            $heading = 'h2';
+            $class = 'fs-5';
             $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-small');
         } else {
             $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured');
@@ -90,14 +92,16 @@ HTML;
 
         return <<<HTML
 <div class="card text-light card-img-scale w-100 h-100 overflow-hidden">
-    <img src="{$thumbnail}" class="card-img h-100" alt="...">
+    <img src="{$thumbnail}" class="card-img h-100" alt="{$post->post_title}">
     <div class="card-img-overlay d-flex">
         <div class="w-100 mt-auto">
-            <a href="{$categoryUrl}" class="badge text-reset text-decoration-none mb-2" style="background-color: #{$categoryColor} !important;">
+            <a href="{$categoryUrl}" class="badge text-reset text-decoration-none mb-2" 
+                style="background-color: #{$categoryColor} !important;"
+                aria-label="Zobacz wpisy z kategorii {$category}">
                 {$category}
             </a>
 
-            <{$heading} class="card-title">
+            <{$heading} class="card-title $class">
                 <a href="{$link}" class="btn-link stretched-link text-reset">
                     {$post->post_title}
                 </a>

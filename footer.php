@@ -24,14 +24,18 @@
                         $image = get_template_directory_uri() . '/assets/images/logo.webp';
                     }
                     ?>
-                    <img src="<?php echo $image; ?>" class="img-fluid"/>
+                    <img src="<?php echo $image; ?>" class="img-fluid" alt="EchoTrybun.pl logo" />
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <a href="<?php echo esc_url(get_theme_mod('facebook')); ?>" class="text-white btn-link fw-bold fs-3" target="_blank">
+                <a href="<?php echo esc_url(get_theme_mod('facebook')); ?>" 
+                   class="text-white btn-link fw-bold fs-3" target="_blank" rel="nofollow"
+                    aria-label="Odwiedź nas na Facebook">
                     <i class="bi bi-facebook"></i>
                 </a>
-                <a href="<?php echo esc_url(get_theme_mod('instagram')); ?>" class="text-white btn-link fw-bold fs-3 ms-4">
+                <a href="<?php echo esc_url(get_theme_mod('instagram')); ?>" 
+                   class="text-white btn-link fw-bold fs-3 ms-4" target="_blank" rel="nofollow"
+                   aria-label="Sprawdź nasz profil na Instagram">
                     <i class="bi bi-instagram"></i>
                 </a>
             </div>
@@ -63,7 +67,12 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+var _qasp = _qasp || [];
+_qasp.push(['setPAID']);
+</script>
+
 </body>
 </html>

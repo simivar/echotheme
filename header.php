@@ -18,6 +18,9 @@
     <?php wp_resource_hints(); ?>
     <?php wp_enqueue_scripts(); ?>
     <?php _wp_render_title_tag(); ?>
+    <?php \echotheme\Services\MetaHeaderGenerator::generate(); ?>
+
+	<script async src="https://a.spolecznosci.net/core/2963a7ab5f0df0381007f04d65008312/main.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -32,7 +35,7 @@
                 $image = get_template_directory_uri() . '/assets/images/logo.webp';
             }
             ?>
-            <img src="<?php echo $image; ?>" />
+            <img src="<?php echo $image; ?>" alt="EchoTrybun.pl logo" />
         </a>
 
         <?php

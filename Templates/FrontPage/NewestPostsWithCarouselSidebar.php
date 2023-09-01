@@ -92,21 +92,25 @@ HTML;
         }
         $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
+        $escapedTitle = esc_attr(strip_tags($post->post_title));
+
         return <<<HTML
 <div class="carousel-item $class">
     <div class="card text-light card-img-scale w-100 overflow-hidden">
-        <img src="{$thumbnail}" class="d-block card-img h-100 img-fluid object-fit-fill" alt="...">
+        <img src="{$thumbnail}" class="d-block card-img h-100 img-fluid object-fit-fill" alt="{$escapedTitle}" loading="lazy">
         <div class="card-img-overlay d-flex">
             <div class="w-100 mt-auto">
-                <a href="{$categoryUrl}" class="badge mb-2" style="background-color: #{$categoryColor} !important;">
+                <a href="{$categoryUrl}" class="badge mb-2" 
+                    style="background-color: #{$categoryColor} !important;"
+                    aria-label="Zobacz wpisy z kategorii {$category}">
                     {$category}
                 </a>
 
-                <h6 class="card-title">
-                    <a href="{$link}" class="btn-link stretched-link text-reset">
+                <h4 class="card-title">
+                    <a href="{$link}" class="btn-link stretched-link text-reset" aria-label="{$escapedTitle}">
                         {$post->post_title}
                     </a>
-                </h6>
+                </h4>
             </div>
         </div>
     </div>

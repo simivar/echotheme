@@ -39,9 +39,9 @@ class CategoryPostsSectionTemplate
         <div class="row">
             <div class="col-12">
                 <div class="mb-1 row">
-                    <h2 class="m-0 mb-2">
+                    <h5 class="m-0 mb-2 fs-3">
                         <a class="text-reset fw-bold" href="{$categoryLink}">{$categoryData->name}</a>
-                    </h2>
+                    </h5>
                 </div>
                 <div class="row mb-4">
                     {$postsHtml}
@@ -61,20 +61,24 @@ HTML;
 
         $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
+        $escapedTitle = esc_attr(strip_tags($post->post_title));
+
         return <<<HTML
 
 <div class="col-xl-3 col-md-6 col-12">
     <div class="row">
         <div class="col">
-            <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3">
-                <img class="card-img" src="{$thumbnail}" alt="">
+            <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3" aria-label="{$escapedTitle}">
+                <img class="card-img" src="{$thumbnail}" alt="{$post->post_title}" loading="lazy">
             </a>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="flex-column d-flex align-items-start justify-content-center h-100">
-                <a href="{$categoryUrl}" class="badge bg-danger text-decoration-none my-2" style="background-color: #{$categoryColor} !important;">
+                <a href="{$categoryUrl}" class="badge bg-danger text-decoration-none my-2" 
+                    style="background-color: #{$categoryColor} !important;"
+                    aria-label="Zobacz wpisy z kategorii {$category}">
                     {$category}
                 </a>
     

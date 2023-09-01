@@ -2,6 +2,11 @@
 
 get_header();
 
+echo <<<ADS
+    <div class="spolecznoscinet echoad-web justify-content-center d-none d-md-flex" id="spolecznosci-9579" data-min-width="750"></div>
+    <div class="spolecznoscinet echoad-mobile justify-content-center d-md-none d-flex" id="spolecznosci-9585" data-max-width="750"></div>
+ADS;
+
 $posts = get_posts(
     array(
         'numberposts' => 16,
@@ -40,6 +45,11 @@ echo <<<HTML
 </section>
 HTML;
 
+
+echo <<<ADS
+    <div class="spolecznoscinet echoad-web justify-content-center d-none d-md-flex" id="spolecznosci-9582" data-min-width="750"></div>
+    <div class="spolecznoscinet echoad-mobile justify-content-center d-md-none d-flex" id="spolecznosci-9586" data-max-width="750"></div>
+ADS;
 
 $categoryPostsSectionsIds = get_theme_mod('frontpage_categories');
 if (is_array($categoryPostsSectionsIds) && count($categoryPostsSectionsIds) > 0) {

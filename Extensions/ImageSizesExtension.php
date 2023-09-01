@@ -16,9 +16,9 @@ final class ImageSizesExtension
 
     private static function addImageSizes(): void
     {
-        add_image_size('echotheme-featured', 99999, 479);
-        add_image_size('echotheme-featured-small', 99999, 254);
-        add_image_size('echotheme-featured-wide', 99999, 179);
+        add_image_size('echotheme-featured', 734, 548, true);
+        add_image_size('echotheme-featured-small', 354, 265);
+        add_image_size('echotheme-featured-wide', 261, 185);
     }
 
     private static function addCustomLogo(): void
