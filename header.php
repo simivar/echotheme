@@ -19,8 +19,7 @@
     <?php wp_enqueue_scripts(); ?>
     <?php _wp_render_title_tag(); ?>
     <?php \echotheme\Services\MetaHeaderGenerator::generate(); ?>
-
-	<script async src="https://a.spolecznosci.net/core/2963a7ab5f0df0381007f04d65008312/main.js"></script>
+    <?php \echotheme\Services\Ads\SpolecznosciNet::header(); ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
