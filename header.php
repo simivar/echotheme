@@ -11,14 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <?php wp_site_icon(); ?>
-    <?php wp_shortlink_wp_head(); ?>
-    <?php rel_canonical(); ?>
-    <?php adjacent_posts_rel_link_wp_head(); ?>
-    <?php wp_resource_hints(); ?>
-    <?php wp_enqueue_scripts(); ?>
-    <?php _wp_render_title_tag(); ?>
-    <?php \echotheme\Services\MetaHeaderGenerator::generate(); ?>
+    <?php wp_head(); ?>
     <?php \echotheme\Services\Ads\SpolecznosciNet::header(); ?>
 </head>
 <body class="d-flex flex-column min-vh-100">

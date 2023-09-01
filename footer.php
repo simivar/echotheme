@@ -71,6 +71,8 @@
 
 <?php
     \echotheme\Services\Ads\SpolecznosciNet::footer();
+
+    wp_footer();
 ?>
 
 </body>

@@ -10,6 +10,8 @@ spl_autoload_register(static function($class) {
 \echotheme\Extensions\PostViewsCounterExtension::register();
 \echotheme\Extensions\ImageSizesExtension::register();
 \echotheme\Extensions\MenusExtension::register();
+\echotheme\Services\ScriptsClearer::clear();
+new \echotheme\Services\ResponsiveEmbeds();
 
 function echotheme_customize_socials(\WP_Customize_Manager $wp_customize)
 {
