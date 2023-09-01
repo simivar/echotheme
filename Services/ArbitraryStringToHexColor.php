@@ -6,8 +6,15 @@ namespace echotheme\Services;
 
 class ArbitraryStringToHexColor
 {
+    /** @var array<string, string> */
+    protected static array $cache = [];
+
     public static function generate(string $string): string
     {
+        if (array_key_exists($string, self::$cache)) {
+            return self::$cache[$string];
+        }
+
         $hash = 0;
         $strLength = strlen($string);
 
@@ -31,6 +38,8 @@ class ArbitraryStringToHexColor
 
         // Combine the color components
         $colorCode = $r . $g . $b;
+
+        self::$cache[$string] = $colorCode;
 
         return $colorCode;
     }
