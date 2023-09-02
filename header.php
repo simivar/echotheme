@@ -13,6 +13,7 @@
 
     <?php wp_head(); ?>
     <?php \echotheme\Services\Ads\SpolecznosciNet::header(); ?>
+    <?php \echotheme\Services\Ads\Monetag::header(); ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
 

@@ -79,7 +79,7 @@ HTML;
     private static function renderSingleCarouselItem(\WP_Post $post, string $class = ''): string
     {
         $link = esc_url(get_permalink($post));
-        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
+        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-small');
 
         /** @var WP_Term[] $category */
         $category = get_the_category($post);

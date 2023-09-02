@@ -69,6 +69,8 @@ HTML;
     {
         $link = esc_url(get_permalink($post));
 
+        $escapedTitle = esc_attr(strip_tags(str_replace('"', '\'', $post->post_title)));
+
         /** @var WP_Term[] $category */
         $category = get_the_category($post);
         if (empty($category)) {
@@ -92,7 +94,7 @@ HTML;
 
         return <<<HTML
 <div class="card text-light card-img-scale w-100 h-100 overflow-hidden">
-    <img src="{$thumbnail}" class="card-img h-100" alt="{$post->post_title}">
+    <img src="{$thumbnail}" class="card-img h-100" alt="{$escapedTitle}">
     <div class="card-img-overlay d-flex">
         <div class="w-100 mt-auto">
             <a href="{$categoryUrl}" class="badge text-reset text-decoration-none mb-2" 

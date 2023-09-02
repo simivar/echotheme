@@ -45,7 +45,7 @@ class NewestPostsWithSidebarTemplate
         $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
         $escapedTitle = esc_attr(strip_tags($post->post_title));
-        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
+        $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-archive');
 
 		if ($thumbnail === false) {
 			$thumbnail = 'https://placehold.co/261x136/e9ecef/db1b1b?font=Lato&color=dc3545&text=' . wordwrap($escapedTitle, 30, '\n');

@@ -12,13 +12,14 @@ use function get_the_post_thumbnail_url;
 
 class CategoryPostsSectionTemplate
 {
-    public static function render(int $categoryId): string
+    public static function render(int $categoryId, array $exclude = []): string
     {
         $posts = get_posts([
             'numberposts' => 4,
             'post_type' => 'post',
             'post_status' => 'publish',
             'category' => $categoryId,
+            'exclude' => $exclude,
         ]);
         if (count($posts) < 1) {
             return '';
@@ -59,9 +60,13 @@ HTML;
         $link = esc_url(get_permalink($post));
         $thumbnail = get_the_post_thumbnail_url($post, 'echotheme-featured-wide');
 
+        $escapedTitle = esc_attr(strip_tags(str_replace('"', '\'', $post->post_title)));
+        if ($thumbnail === false) {
+            $thumbnail = 'https://placehold.co/261x158/e9ecef/db1b1b?font=Lato&color=dc3545&text=' . wordwrap($escapedTitle, 30, '\n');
+        }
+
         $categoryColor = \echotheme\Services\ArbitraryStringToHexColor::generate($category);
 
-        $escapedTitle = esc_attr(strip_tags($post->post_title));
 
         return <<<HTML
 
@@ -69,7 +74,7 @@ HTML;
     <div class="row">
         <div class="col">
             <a href="{$link}" class="d-flex card-img-scale overflow-hidden rounded-3" aria-label="{$escapedTitle}">
-                <img class="card-img" src="{$thumbnail}" alt="{$post->post_title}" loading="lazy">
+                <img class="card-img" src="{$thumbnail}" alt="{$escapedTitle}" loading="lazy">
             </a>
         </div>
     </div>

@@ -9,8 +9,6 @@ final class SpolecznosciNet
     public static function header(): void
     {
         add_filter('the_content', [SpolecznosciNet::class, 'content']);
-
-        echo '<script async src="https://a.spolecznosci.net/core/2963a7ab5f0df0381007f04d65008312/main.js"></script>';
     }
 
     public static function content(string $theContent): string
@@ -33,9 +31,12 @@ final class SpolecznosciNet
                 $newContent .= self::show(9583, 9588, false);
             }
 
+            /*
+             * seems to be not working
             if ($i === 5) {
                 $newContent .= self::show(9590, 9589, false);
             }
+            */
         }
 
         return $newContent;
@@ -43,6 +44,7 @@ final class SpolecznosciNet
 
     public static function footer(): void
     {
+        echo '<script async src="https://a.spolecznosci.net/core/2963a7ab5f0df0381007f04d65008312/main.js"></script>';
         echo <<<HTML
 <script type="text/javascript">
 var _qasp = _qasp || [];

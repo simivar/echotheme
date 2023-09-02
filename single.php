@@ -8,6 +8,9 @@ $thumbnailUrl = get_the_post_thumbnail(null, 'full', ['class' => 'img-fluid w-10
 $categoriesHtml = '';
 $otherArticlesHtml = '';
 
+global $post;
+setup_postdata($post);
+
 /** @var \WP_Term[] $categories */
 $categories = get_the_category();
 foreach ($categories as $category) {
@@ -19,11 +22,11 @@ foreach ($categories as $category) {
 <a href="{$categoryUrl}" class="badge bg-text-decoration-none" style="color: #{$categoryColor}">{$categoryName}</a>
 HTML;
 
-    $otherArticlesHtml .= \echotheme\Templates\FrontPage\CategoryPostsSectionTemplate::render($category->term_id);
+    $otherArticlesHtml .= \echotheme\Templates\FrontPage\CategoryPostsSectionTemplate::render(
+        $category->term_id,
+        [get_the_ID()],
+    );
 }
-
-global $post;
-setup_postdata($post);
 
 \echotheme\Extensions\PostViewsCounterExtension::trackPostViews();
 
