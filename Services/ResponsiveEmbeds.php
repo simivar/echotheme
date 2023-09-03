@@ -13,7 +13,11 @@ class ResponsiveEmbeds
 
     public static function handle($return, $data, $url): string
     {
-        $mod = '';
+        $return = str_replace('<iframe', '<iframe loading="lazy"', $return);
+
+        if ('YouTube' !== $data->provider_name) {
+            return $return;
+        }
 
         if  (   ( $data->type == 'video' ) &&
             ( isset($data->width) ) && ( isset($data->height) ) &&

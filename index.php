@@ -2,6 +2,12 @@
 
 get_header();
 
+if (is_paged()) {
+    include 'archive.php';
+
+    return;
+}
+
 \echotheme\Services\Ads\SpolecznosciNet::show(9579, 9585);
 
 $posts = get_posts(
@@ -30,7 +36,7 @@ echo <<<HTML
             <div class="col-12 col-lg-8">
                 <div class="row mb-4 justify-content-center">
                     <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-12 d-flex">
-                        <a href="/?post_type=post" type="button" class="btn btn-danger btn-animation w-100 text-uppercase rounded-pill" aria-label="Close">
+                        <a href="/page/2" type="button" class="btn btn-danger btn-animation w-100 text-uppercase rounded-pill" aria-label="Close">
                             <span aria-hidden="true">Więcej</span>
                             <i class="bi bi-arrow-right"></i>
                         </a>

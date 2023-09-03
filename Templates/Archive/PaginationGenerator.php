@@ -12,7 +12,7 @@ class PaginationGenerator
 {
     public static function generate(): string
     {
-        if (!is_archive()) {
+        if (!is_archive() && !is_paged()) {
             return '';
         }
 

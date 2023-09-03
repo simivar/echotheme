@@ -9,15 +9,15 @@ class NavigationItem
     private string $title;
     private string $url;
     private string $type;
-    private bool $isActive;
     private array $children = [];
+    private int $id;
 
-    public function __construct(string $title, string $url, string $type, bool $isActive)
+    public function __construct(string $title, string $url, string $type, int $id)
     {
         $this->title = $title;
         $this->url = $url;
         $this->type = $type;
-        $this->isActive = $isActive;
+        $this->id = $id;
     }
 
     public function getTitle(): string
@@ -32,7 +32,7 @@ class NavigationItem
 
     public function isActive(): bool
     {
-        return $this->isActive;
+        return $this->id === NavigationMapper::getCurrentCategoryId();
     }
 
     public function addChildren(self $item): void
