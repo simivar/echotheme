@@ -17,7 +17,7 @@ class FeaturedPostsTemplate
     public static function render(array $posts): void
     {
         if (count($posts) < 6) {
-            echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(6);
+            echo \echotheme\Templates\Generic\NoEnoughPostsTemplate::render();
 
             return;
         }

@@ -6,7 +6,7 @@ $categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::html();
 
 if (!have_posts()) {
     echo \echotheme\Templates\Generic\ContainerWithSidebarTemplate::render(
-        \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1),
+        \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(),
         $categoriesWithSidebar,
     );
     get_footer();

@@ -18,7 +18,7 @@ class NewestPostsWithSidebarTemplate
     public static function render(array $posts, string $sidebarData, string $title = '', string $description = ''): string
     {
         if (count($posts) < 1) {
-            $postsHtml = \echotheme\Templates\Generic\NoEnoughPostsTemplate::render(1);
+            $postsHtml = \echotheme\Templates\Generic\NoEnoughPostsTemplate::render();
         } else {
             $postsHtml = '';
             foreach ($posts as $post) {
