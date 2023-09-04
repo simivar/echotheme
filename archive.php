@@ -28,23 +28,7 @@ HTML;
 $title = get_the_archive_title() . $postsBadge;
 
 echo \echotheme\Templates\Generic\NewestPostsWithSidebarTemplate::render($myposts, $categoriesWithSidebar, $title, $description);
-
-$pagination = \echotheme\Templates\Archive\PaginationGenerator::generate();
-echo <<<HTML
-<section class="pt-4 pb-0">
-    <div class="container">
-        <div class="row row-cols-2">
-            <div class="col-12 col-lg-8">
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-end">
-                        {$pagination}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-HTML;
+echo \echotheme\Templates\Archive\PaginationGenerator::generate();
 
 
 get_footer();
