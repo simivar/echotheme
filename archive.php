@@ -2,15 +2,7 @@
 
 get_header();
 
-
-$queriedObject = get_queried_object();
-if ($queriedObject instanceof \WP_Term) {
-    $categoryId = (int) get_queried_object_id();
-} else {
-    $categoryId = 0;
-}
-
-$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::html($categoryId);
+$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::html();
 
 if (!have_posts()) {
     echo \echotheme\Templates\Generic\ContainerWithSidebarTemplate::render(
