@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace echotheme\Services;
 
+use echotheme\Dto\CategoryWithRecentPostDto;
+
 class GetCategoriesWithRecentPosts
 {
     /**
-     * @return array<object{'id': string, 'name': string, 'post_date': string}>
+     * @return CategoryWithRecentPostDto[]
      */
     public static function get(int $limit, int $excludedId): array {
         global $wpdb;
 
-        return $wpdb->get_results(<<<SQL
+        $results = $wpdb->get_results(<<<SQL
 SELECT
     wpt.term_id as id,
 	wpt.name,
@@ -38,5 +40,16 @@ WHERE
 ORDER BY post_date DESC
 LIMIT {$limit}
 SQL);
+
+        $return = [];
+        foreach ($results as $result) {
+            $return[] = new CategoryWithRecentPostDto(
+                id: (int) $result->id,
+                name: $result->name,
+                postDate: $result->post_date,
+            );
+        }
+
+        return $return;
     }
 }
