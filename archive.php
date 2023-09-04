@@ -5,12 +5,12 @@ get_header();
 
 $queriedObject = get_queried_object();
 if ($queriedObject instanceof \WP_Term) {
-    $categoryId = get_queried_object_id();
+    $categoryId = (int) get_queried_object_id();
 } else {
     $categoryId = 0;
 }
-$categories = \echotheme\Services\GetCategoriesWithRecentPosts::get(5, $categoryId);
-$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::get($categories);
+
+$categoriesWithSidebar = \echotheme\Templates\Archive\CategorySidebar::html($categoryId);
 
 if (!have_posts()) {
     echo \echotheme\Templates\Generic\ContainerWithSidebarTemplate::render(
