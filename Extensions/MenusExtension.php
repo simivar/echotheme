@@ -15,9 +15,9 @@ final class MenusExtension
     {
         register_nav_menus(
             array(
-                \echotheme\Navigation\NavigationMapper::HEADER_MENU => __( 'Header Menu' ),
-                \echotheme\Navigation\NavigationMapper::FOOTER_MENU => __( 'Footer Menu' ),
-                \echotheme\Navigation\NavigationMapper::FOOTER_TOP_MENU => __( 'Footer Small Top Menu' ),
+                \echotheme\Services\Navigation\NavigationMapper::HEADER_MENU => __( 'Header Menu' ),
+                \echotheme\Services\Navigation\NavigationMapper::FOOTER_MENU => __( 'Footer Menu' ),
+                \echotheme\Services\Navigation\NavigationMapper::FOOTER_TOP_MENU => __( 'Footer Small Top Menu' ),
             )
         );
     }

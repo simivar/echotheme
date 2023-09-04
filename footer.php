@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-4">
                 <?php
-                $footerTopMenu = \echotheme\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Navigation\NavigationMapper::FOOTER_TOP_MENU);
+                $footerTopMenu = \echotheme\Services\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Services\Navigation\NavigationMapper::FOOTER_TOP_MENU);
                 $footerTopMenuCount = count($footerTopMenu);
                 $i = 0;
                 ?>
@@ -43,7 +43,7 @@
         <div class="row pt-5">
             <div class="col">
                 <?php
-                $headerNavigation = \echotheme\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Navigation\NavigationMapper::FOOTER_MENU);
+                $headerNavigation = \echotheme\Services\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Services\Navigation\NavigationMapper::FOOTER_MENU);
                 ?>
                 <ul class="nav justify-content-center">
                     <?php foreach($headerNavigation as $item): ?>

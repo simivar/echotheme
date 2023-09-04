@@ -32,11 +32,6 @@ class ScriptsClearer
         wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
     }
 
-    public static function clearDashicons(): void
-    {
-        wp_deregister_style( 'dashicons' );
-    }
-
     public static function clearInlineStyles(): void
     {
         wp_dequeue_style('global-styles');

@@ -32,7 +32,7 @@
         </a>
 
         <?php
-        $headerNavigation = \echotheme\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Navigation\NavigationMapper::HEADER_MENU);
+        $headerNavigation = \echotheme\Services\Navigation\NavigationMapper::getMappedMenuItems(\echotheme\Services\Navigation\NavigationMapper::HEADER_MENU);
         ?>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

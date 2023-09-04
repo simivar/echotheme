@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace echotheme\Navigation;
+namespace echotheme\Services\Navigation;
 
 class NavigationItem
 {

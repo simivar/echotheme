@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace echotheme\Admin\Customization;
+namespace echotheme\Extensions\Admin\Customization;
 
 use function esc_attr;
 use function esc_html;
