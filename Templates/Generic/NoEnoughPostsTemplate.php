@@ -13,7 +13,7 @@ class NoEnoughPostsTemplate
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="text-center">Not enough posts found. <i class="bi bi-emoji-frown"></i></h1>
+                <h1 class="text-center">Not enough posts found.</h1>
             </div>
         </div>
     </div>

@@ -38,7 +38,7 @@ class NewestPostsWithCarouselSidebar
             'orderby' => 'wpb_post_views_count meta_value_num',
             'order' => 'DESC',
             'date_query' => [
-                'after' => '1 week ago',
+                'after' => '4 weeks ago',
                 'inclusive' => true,
             ],
         ]);

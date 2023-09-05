@@ -2,4 +2,6 @@
 import '../scss/styles.scss'
 
 // Import all of Bootstrap's JS
-import * as bootstrap from 'bootstrap'
+import * as popper from '@popperjs/core'
+import {Dropdown, Carousel} from 'bootstrap'
+import 'bootstrap-icons/font/bootstrap-icons.scss'

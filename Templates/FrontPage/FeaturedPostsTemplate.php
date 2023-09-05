@@ -94,7 +94,7 @@ HTML;
 
         return <<<HTML
 <div class="card text-light card-img-scale w-100 h-100 overflow-hidden">
-    <img src="{$thumbnail}" class="card-img h-100" alt="{$escapedTitle}">
+    <img src="{$thumbnail}" class="card-img h-100" alt="{$escapedTitle}" fetchpriority="high"> 
     <div class="card-img-overlay d-flex">
         <div class="w-100 mt-auto">
             <a href="{$categoryUrl}" class="badge text-reset text-decoration-none mb-2" 
