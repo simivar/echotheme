@@ -6,7 +6,6 @@ $title = the_title('', '', false);
 $thumbnailUrl = get_the_post_thumbnail(null, 'full', ['class' => 'img-fluid w-100 h-100 object-fit-cover']);
 
 $categoriesHtml = '';
-$otherArticlesHtml = '';
 
 global $post;
 setup_postdata($post);
@@ -21,11 +20,6 @@ foreach ($categories as $category) {
     $categoriesHtml .= <<<HTML
 <a href="{$categoryUrl}" class="badge bg-text-decoration-none" style="color: #{$categoryColor}">{$categoryName}</a>
 HTML;
-
-    $otherArticlesHtml .= \echotheme\Templates\FrontPage\CategoryPostsSectionTemplate::render(
-        $category->term_id,
-        [get_the_ID()],
-    );
 }
 
 \echotheme\Extensions\PostViewsCounterExtension::trackPostViews();
@@ -126,8 +120,13 @@ echo <<<HTML
         </div>
     </div>
 </article>
-
-$otherArticlesHtml
 HTML;
+
+foreach ($categories as $category) {
+    echo \echotheme\Views\CategoryPostsWithImageAboveView::view(
+        $category->term_id,
+        [get_the_ID()],
+    );
+}
 
 get_footer();

@@ -2,17 +2,16 @@
 
 const path = require('path')
 const autoprefixer = require('autoprefixer')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 const glob = require('glob-all')
 
 module.exports = {
     mode: 'development',
-    entry: './src/js/main.js',
+    entry: './assets/js/main.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'assets', 'dist')
     },
     devServer: {
         static: path.resolve(__dirname, 'dist'),
@@ -24,9 +23,8 @@ module.exports = {
         new miniCssExtractPlugin(),
         new PurgeCSSPlugin({
             paths: glob.sync([
-                `${path.join(__dirname, 'Templates')}/**/*`,
-                `${path.join(__dirname, 'Services')}/**/*`,
-                `${path.join(__dirname, 'views')}/**/*`,
+                `${path.join(__dirname, 'src', 'Templates')}/**/*`,
+                `${path.join(__dirname, 'src', 'Services')}/**/*`,
                 `${path.join(__dirname, 'header.php')}`,
                 `${path.join(__dirname, 'archive.php')}`,
                 `${path.join(__dirname, 'index.php')}`,

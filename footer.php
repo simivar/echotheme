@@ -67,12 +67,7 @@
     </div>
 </footer>
 
-
-<script src="<?php echo get_theme_file_uri('dist/main.js'); ?>"></script>
-
 <?php
-    \echotheme\Services\Ads\SpolecznosciNet::footer();
-
     wp_footer();
 ?>
 
