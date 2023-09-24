@@ -6,6 +6,9 @@ namespace echotheme\Extensions;
 
 final class ImageSizesExtension
 {
+    public const OPENGRAPH = 'echotheme-opengraph';
+    public const TWITTER_CARD = 'echotheme-twitter-card';
+
     public static function register(): void
     {
         add_theme_support('post-thumbnails');
@@ -20,6 +23,8 @@ final class ImageSizesExtension
         add_image_size('echotheme-featured-small', 624, 401, true);
         add_image_size('echotheme-featured-archive', 513, 315, true);
         add_image_size('echotheme-featured-wide', 459, 278, true);
+        add_image_size(self::OPENGRAPH, 1200, 630, true);
+        add_image_size(self::TWITTER_CARD, 1280, 640, true);
     }
 
     private static function addCustomLogo(): void

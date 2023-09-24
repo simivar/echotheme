@@ -11,6 +11,8 @@ spl_autoload_register(static function($class) {
 
 \echotheme\Services\ClearCacheOnPostStatusChange::register();
 \echotheme\Services\DistScriptsRegisterer::register();
+\echotheme\Services\MetaHeaderGenerator::register();
+\echotheme\Services\OpenGraphHeaderGenerator::register();
 \echotheme\Extensions\PostViewsCounterExtension::register();
 \echotheme\Extensions\ImageSizesExtension::register();
 \echotheme\Extensions\MenusExtension::register();

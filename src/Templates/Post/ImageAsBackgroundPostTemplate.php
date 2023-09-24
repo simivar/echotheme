@@ -8,14 +8,15 @@ use echotheme\Dto\PostDto;
 
 class ImageAsBackgroundPostTemplate
 {
-    public static function render(PostDto $postDto, bool $isSmaller = true): string
+    public static function render(PostDto $postDto, bool $isSmaller = true, bool $disableLazyLoad = false): string
     {
         $title = self::renderTitle($postDto, $isSmaller);
         $thumbnail = $isSmaller ? $postDto->thumbnailFeaturedSmall() : $postDto->thumbnailFeatured();
+        $lazyLoad = $disableLazyLoad ? '' : 'loading="lazy"';
 
         return <<<HTML
     <div class="card text-light card-img-scale w-100 h-100 overflow-hidden">
-        <img src="{$thumbnail}" class="d-block card-img h-100 img-fluid object-fit-fill" alt="{$postDto->escapedTitle()}" loading="lazy">
+        <img src="{$thumbnail}" class="d-block card-img h-100 img-fluid object-fit-fill" alt="{$postDto->escapedTitle()}" {$lazyLoad}>
         <div class="card-img-overlay d-flex">
             <div class="w-100 mt-auto">
                 <a href="{$postDto->mainCategoryLink()}" class="badge text-reset text-decoration-none mb-2"

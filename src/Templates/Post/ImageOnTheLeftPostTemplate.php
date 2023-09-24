@@ -8,13 +8,15 @@ use echotheme\Dto\PostDto;
 
 class ImageOnTheLeftPostTemplate
 {
-    public static function render(PostDto $postDto): string
+    public static function render(PostDto $postDto, bool $disableLazyLoad = false): string
     {
+        $lazyLoad = $disableLazyLoad ? '' : 'loading="lazy"';
+
         return <<<HTML
 <div class="row mb-4">
     <div class="col-12 col-md-6 col-lg-5">
         <a href="{$postDto->link()}" class="d-flex card-img-scale overflow-hidden rounded-3" aria-label="{$postDto->escapedTitle()}">
-            <img class="card-img" src="{$postDto->thumbnailFeaturedArchive()}" alt="{$postDto->escapedTitle()}" loading="lazy">
+            <img class="card-img" src="{$postDto->thumbnailFeaturedArchive()}" alt="{$postDto->escapedTitle()}" {$lazyLoad}>
         </a>
     </div>
     <div class="col">

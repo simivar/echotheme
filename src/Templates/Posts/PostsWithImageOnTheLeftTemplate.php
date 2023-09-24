@@ -16,8 +16,8 @@ class PostsWithImageOnTheLeftTemplate
         }
 
         $content = '';
-        foreach ($posts as $post) {
-            $content .= ImageOnTheLeftPostTemplate::render($post);
+        foreach ($posts as $key => $post) {
+            $content .= ImageOnTheLeftPostTemplate::render($post, $key < 2);
         }
 
         return $content;

@@ -15,8 +15,8 @@ class FeaturedPostsTemplate
             return '';
         }
 
-        $firstPost = ImageAsBackgroundPostTemplate::render($posts[0], false);
-        $secondPost = ImageAsBackgroundPostTemplate::render($posts[1]);
+        $firstPost = ImageAsBackgroundPostTemplate::render($posts[0], false, true);
+        $secondPost = ImageAsBackgroundPostTemplate::render($posts[1], true, true);
         $thirdPost = ImageAsBackgroundPostTemplate::render($posts[2]);
         $fourthPost = ImageAsBackgroundPostTemplate::render($posts[3]);
         $fifthPost = ImageAsBackgroundPostTemplate::render($posts[4]);
