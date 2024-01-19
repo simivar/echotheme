@@ -17,7 +17,7 @@ services:
       - .:/var/www/html/wp-content/themes/echotheme
 
   db:
-    image: mysql:5.7
+    image: mysql:8.3
     restart: always
     ports:
       - 3366:3306
